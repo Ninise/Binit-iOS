@@ -54,7 +54,9 @@ struct LandingView: View {
             .padding(.horizontal, 35)
             
         }
+        .navigationBarBackButtonHidden()
     }
+    
 }
 
 struct LandingView_Previews: PreviewProvider {

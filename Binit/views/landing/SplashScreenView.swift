@@ -9,21 +9,37 @@ import SwiftUI
 
 struct SplashScreenView: View {
     
+    @State private var goToLanding: Bool = false
+    
     let binitImage = "ic_landing_binit"
     let whalescaleImage = "ic_landing_whalescale"
     
     var body: some View {
-        VStack {
-            Spacer()
-            Image(binitImage)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 140)
-            Spacer()
-            Image(whalescaleImage)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
+        NavigationView {
+            VStack {
+                NavigationViews
+                Spacer()
+                Image(binitImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 140)
+                Spacer()
+                Image(whalescaleImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    goToLanding = true
+                })
+        }
+        }
+    }
+    
+    private var NavigationViews: some View {
+        ZStack {
+            NavigationLink(destination: LandingView(), isActive: $goToLanding, label: {})
         }
     }
 }
