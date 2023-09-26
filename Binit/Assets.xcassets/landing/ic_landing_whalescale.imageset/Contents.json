@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_landing_whalescale.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
