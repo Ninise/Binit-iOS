@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LandingView: View {
     
+    let binitLogo = "ic_landing_binit"
     let backImage = "ic_landing_dialog_back"
     
     var body: some View {
@@ -17,6 +18,40 @@ struct LandingView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
+            VStack {
+                Image(binitLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 90)
+                
+                Text(LocalizedStringKey("Landing_dialog_title"))
+                    .font(.custom(FontUtils.FONT_MEDIUM, size: 18))
+                    .foregroundColor(.mainColor)
+                    .multilineTextAlignment(.center)
+                    
+                Text(LocalizedStringKey("Landing_dialog_content"))
+                    .font(.custom(FontUtils.FONT_REGULAR, size: 15))
+                    .foregroundColor(.mainColor)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, -3)
+                    .padding(.horizontal, 20)
+                
+                AppDefaultButton(
+                    title: LocalizedStringKey("Landing_dialog_button"),
+                    color: Color.orangeColor,
+                    callback: {
+                        
+                    })
+                .padding(.top, 5)
+                    
+            }
+            .padding(.top, 20)
+            .padding(.bottom, 25)
+            .padding(.horizontal, 20)
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .frame(width: .infinity)
+            .padding(.horizontal, 35)
             
         }
     }
