@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct PaddingConsts {
+    
+    static let pDefaultPadding20: CGFloat = 20
+    
+    
+}
