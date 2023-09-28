@@ -13,6 +13,8 @@
 		1152D05E2AC264F10067AE02 /* AppDefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */; };
 		1152D0612AC3B4C70067AE02 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0602AC3B4C70067AE02 /* HomeView.swift */; };
 		1152D0632AC3BA830067AE02 /* PaddingConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0622AC3BA830067AE02 /* PaddingConsts.swift */; };
+		1152D0652AC501E40067AE02 /* GarbageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0642AC501E40067AE02 /* GarbageUtils.swift */; };
+		1152D0682AC507E80067AE02 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1152D0672AC507E80067AE02 /* SDWebImageSwiftUI */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -48,6 +50,7 @@
 		1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultButton.swift; sourceTree = "<group>"; };
 		1152D0602AC3B4C70067AE02 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1152D0622AC3BA830067AE02 /* PaddingConsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingConsts.swift; sourceTree = "<group>"; };
+		1152D0642AC501E40067AE02 /* GarbageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageUtils.swift; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1152D0682AC507E80067AE02 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +229,7 @@
 			children = (
 				1152D0522AC260490067AE02 /* FontUtils.swift */,
 				1152D0622AC3BA830067AE02 /* PaddingConsts.swift */,
+				1152D0642AC501E40067AE02 /* GarbageUtils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -273,6 +278,9 @@
 			dependencies = (
 			);
 			name = Binit;
+			packageProductDependencies = (
+				1152D0672AC507E80067AE02 /* SDWebImageSwiftUI */,
+			);
 			productName = Binit;
 			productReference = 11F620262AC25A03005FB2EC /* Binit.app */;
 			productType = "com.apple.product-type.application";
@@ -345,6 +353,9 @@
 				Base,
 			);
 			mainGroup = 11F6201D2AC25A03005FB2EC;
+			packageReferences = (
+				1152D0662AC507E80067AE02 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 11F620272AC25A03005FB2EC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -395,6 +406,7 @@
 				1152D0552AC260CC0067AE02 /* Color+extensions.swift in Sources */,
 				1152D0612AC3B4C70067AE02 /* HomeView.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,
+				1152D0652AC501E40067AE02 /* GarbageUtils.swift in Sources */,
 				11F6205B2AC25AEC005FB2EC /* SplashScreenView.swift in Sources */,
 				1152D0632AC3BA830067AE02 /* PaddingConsts.swift in Sources */,
 			);
@@ -734,6 +746,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1152D0662AC507E80067AE02 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1152D0672AC507E80067AE02 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1152D0662AC507E80067AE02 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11F6201E2AC25A03005FB2EC /* Project object */;
 }

@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     
     let tempSearchBubbles = ["meat", "styroform", "cup", "papper", "plastic cup"]
     
+    let tempTypes = [GarbageUtils.GARBAGE_TYPE, GarbageUtils.ORGANIC_TYPE, GarbageUtils.RECYCLE_TYPE, GarbageUtils.ELECTRONIC_WASTE_TYPE, GarbageUtils.HHW_TYPE, GarbageUtils.YARD_WASTE_TYPE]
+    
+    
+    let gameImage = "ic_main_game"
     let searchIcon = "ic_search"
     
     var body: some View {
@@ -48,11 +53,83 @@ struct HomeView: View {
                     }
                     .padding(.top, 10)
                     
-                    Text(LocalizedStringKey("How_to_sort"))
-                        .font(.custom(FontUtils.FONT_BOLD, size: 18))
-                        .foregroundColor(.mainColor)
-                        .padding(.top, PaddingConsts.pDefaultPadding20)
-                        .padding(.leading, PaddingConsts.pDefaultPadding20)
+                    MainTextTitleView(title: LocalizedStringKey("How_to_sort"))
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            Spacer(minLength: PaddingConsts.pDefaultPadding20)
+                            ForEach(tempTypes, id: \.self) { type in
+                                MainGarbageCardView(type: type)
+                                    .padding(.trailing, 8)
+                                
+                            }
+                        }
+                    }
+                    .padding(.top, 1)
+                    
+                    MainTextTitleView(title: LocalizedStringKey("Games"))
+                    
+                    Image(gameImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: .infinity)
+                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    
+                    MainTextTitleView(title: LocalizedStringKey("Good_to_know"))
+                    
+                    HStack (alignment: .top) {
+                        WebImage(url: URL(string: "https://www.colorado.edu/ecenter/sites/default/files/styles/large/public/callout/landfill_fire.png?itok=mJf5MN_C"))
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 80)
+                            .cornerRadius(10)
+                        
+                        
+                        VStack (alignment: .leading, spacing: 5) {
+                            Text("Reuse.Reduce.Recycle")
+                                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
+                                .foregroundColor(.mainColor)
+                            
+                            Text("How to make lifestyle eco-friendly?")
+                                .font(.custom(FontUtils.FONT_REGULAR, size: 12))
+                                .foregroundColor(.mainArticleSubTitleColor)
+                        }
+                        .padding(.leading, 5)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    
+                    Divider()
+                        .background(Color.mainColor.opacity(0.1))
+                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                        .padding(.vertical, 5)
+                    
+                    HStack (alignment: .top) {
+                        WebImage(url: URL(string: "https://www.colorado.edu/ecenter/sites/default/files/styles/large/public/callout/landfill_fire.png?itok=mJf5MN_C"))
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 80)
+                            .cornerRadius(10)
+                        
+                        
+                        VStack (alignment: .leading, spacing: 5) {
+                            Text("Reuse.Reduce.Recycle")
+                                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
+                                .foregroundColor(.mainColor)
+                            
+                            Text("How to make lifestyle eco-friendly?")
+                                .font(.custom(FontUtils.FONT_REGULAR, size: 12))
+                                .foregroundColor(.mainArticleSubTitleColor)
+                        }
+                        .padding(.leading, 5)
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    
+                    
+
                 }
             }
         }
@@ -63,6 +140,19 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+    }
+}
+
+struct MainTextTitleView: View {
+    
+    let title: LocalizedStringKey
+    
+    var body: some View {
+        Text(title)
+            .font(.custom(FontUtils.FONT_BOLD, size: 18))
+            .foregroundColor(.mainColor)
+            .padding(.top, PaddingConsts.pDefaultPadding20)
+            .padding(.leading, PaddingConsts.pDefaultPadding20)
     }
 }
 
@@ -81,5 +171,26 @@ struct QuickSearchBubbleView: View {
         .padding(.vertical, 10)
         .background(Color.searchBodyColor.opacity(0.1))
         .cornerRadius(6)
+    }
+}
+
+struct MainGarbageCardView: View {
+    
+    let type: String
+    
+    var body: some View {
+        VStack {
+            ZStack {
+                Image(GarbageUtils.getBinByType(type: type))
+            }
+            .padding(.vertical, PaddingConsts.pDefaultPadding20)
+            .padding(.horizontal, 24)
+            .background(Color.mainGarbageTypeBackColor)
+            .cornerRadius(10)
+            
+            Text(type)
+                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 12))
+                .foregroundColor(.mainColor)
+        }
     }
 }

@@ -14,7 +14,8 @@ extension Color {
     static let searchTextColor = Color(red: 0.31, green: 0.35, blue: 0.41)
     static let searchBodyColor = Color(red: 0.44, green: 0.46, blue: 0.62)
     static let searchBubbleTextColor = Color(red: 0.31, green: 0.35, blue: 0.41)
-
+    static let mainGarbageTypeBackColor = Color(red: 0.95, green: 0.95, blue: 0.96)
+    static let mainArticleSubTitleColor = Color(red: 0.42, green: 0.44, blue: 0.45)
         
 
 }
