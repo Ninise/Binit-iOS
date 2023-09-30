@@ -25,3 +25,13 @@
 "Drop_off_locations" = "Drop-off locations";
 "Drop_off_locations_subtitle" = "We are working on drop-off locations now";
 "Drop_off_locations_content" = "If you know someone who can help us and provide updating information about drop-off locations, please let us know.";
+
+"Invite_friends" = "Invite friends";
+"Feedback" = "Feedback";
+"Contact_us" = "Contact Us";
+"About_us" = "About Us";
+"Rate_the_app" = "Rate the app";
+"Report_a_problem" = "Report a problem";
+
+"Invite_friend_content" = "Do you know anyone who doesn't sort waste and doesn't understand why it's important?";
+"Share_with_friends" = "Share with friends";

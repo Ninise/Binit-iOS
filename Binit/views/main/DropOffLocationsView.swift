@@ -48,7 +48,7 @@ struct DropOffLocationsView: View {
                     TextField(LocalizedStringKey("Message"), text: $message, axis: .vertical)
                         .foregroundColor(.mainColor)
                         .tint(.orangeColor)
-                        .lineLimit(4, reservesSpace: true)
+                        .lineLimit(5, reservesSpace: true)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 10)
                 }
@@ -62,6 +62,8 @@ struct DropOffLocationsView: View {
                     callback: {
                     
                 })
+                .padding(.top, 5)
+                .padding(.horizontal, 5)
                 
                 
                 

@@ -63,7 +63,8 @@ struct CollectionScheduleView: View {
                     callback: {
                     
                 })
-                
+                .padding(.top, 5)
+                .padding(.horizontal, 5)
                 
                 
                 
