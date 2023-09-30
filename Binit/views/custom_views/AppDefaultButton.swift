@@ -14,18 +14,16 @@ struct AppDefaultButton: View {
     let callback: () -> Void
     
     var body: some View {
-        ZStack {
-            Button(action: {
-                callback()
-            }, label: {
-                Text(title)
-                    .font(.custom(FontUtils.FONT_MEDIUM, size: 16))
-                    .foregroundColor(.white)
-                    .padding()
-                    .padding(.horizontal, 40)
-            })
-            .background(color)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-        }
+        Button(action: {
+            callback()
+        }, label: {
+            Text(title)
+                .font(.custom(FontUtils.FONT_MEDIUM, size: 16))
+                .foregroundColor(.white)
+                .padding()
+                .padding(.horizontal, 40)
+        })
+        .background(color)
+        .clipShape(RoundedRectangle(cornerRadius: 6))
     }
 }

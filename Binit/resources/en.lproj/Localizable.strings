@@ -14,3 +14,14 @@
 "Recycle" = "Recycle";
 "Games" = "Games";
 "Good_to_know" = "Good to know";
+
+
+"Collection_schedule" = "Collection schedule";
+"Collection_schedule_subtitle" = "We are working on collection schedule now";
+"Collection_schedule_content" = "If you know someone who can help us and provide updating information about collecting schedule, please let us know.";
+"Message" = "Message";
+"Send" = "Send";
+
+"Drop_off_locations" = "Drop-off locations";
+"Drop_off_locations_subtitle" = "We are working on drop-off locations now";
+"Drop_off_locations_content" = "If you know someone who can help us and provide updating information about drop-off locations, please let us know.";
