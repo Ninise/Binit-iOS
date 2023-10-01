@@ -35,4 +35,18 @@ class GarbageUtils {
         }
     }
     
+    class func getIconByTypee(type: String) -> String {
+        switch type {
+        case GARBAGE_TYPE: return "ic_garbage"
+        case RECYCLE_TYPE: return "ic_recycle"
+        case ORGANIC_TYPE: return "ic_organic"
+        case ELECTRONIC_WASTE_TYPE: return "ic_e_waste"
+        case HHW_TYPE: return "ic_hazard"
+        case YARD_WASTE_TYPE: return "ic_house"
+            
+        default:
+            return "ic_garbage"
+        }
+    }
+    
 }

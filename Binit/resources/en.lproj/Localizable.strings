@@ -15,6 +15,11 @@
 "Games" = "Games";
 "Good_to_know" = "Good to know";
 
+"Home" = "Home";
+"Schedule" = "Schedule";
+"Locations" = "Locations";
+"Settings" = "Settings";
+
 
 "Collection_schedule" = "Collection schedule";
 "Collection_schedule_subtitle" = "We are working on collection schedule now";
@@ -35,3 +40,44 @@
 
 "Invite_friend_content" = "Do you know anyone who doesn't sort waste and doesn't understand why it's important?";
 "Share_with_friends" = "Share with friends";
+
+"Feedback_subtitle" = "We'd love to hear from you!";
+"Feedback_subtitle_content" = "Share your feedback on how we're doing or let us know how we can make the app more useful for you.";
+"Email" = "Email";
+"Optional" = "optional";
+"Hint_email" = "name@email.com";
+
+"Lets_connect" = "Let's connect!";
+"Lets_connect_subtitle" = "Tap on the nickname or copy information by tapping the icon";
+"Binit_email" = "contact@binit.pro";
+"Website" = "Website";
+"Binit_website" = "https://binit.pro";
+"Facebook" = "Facebook";
+"Binit_facebook" = "Binit! App";
+"LinkedIn" = "LinkedIn";
+"Binit_linkedin" = "our_linked";
+"TikTok" = "TikTok";
+"Binit_tiktok" = "@binit_app";
+"Instagram" = "Instagram";
+"Binit_instagram" = "@app_binit";
+
+"Who_we_are" = "Who we are:";
+"Who_we_are_content" = "We're excited to introduce the first version of the Binit! app. Our team is nature-loving enthusiasts, who deeply appreciate the Earth and its gifts.";
+"Our_story" = "Our story";
+"Our_story_content" = "When we came to Canada, we had to learn new rules for waste sorting since our home country only had landfills.
+
+It was an interesting journey of discovery, learning all the ins and outs of waste management rules. We even didn't know where to properly dispose of glass (no throwing it down the garbage chute, that's for sure!). It may sound a little funny, but hey, we had never experienced anything like this before!";
+"Why_we_did_it" = "Why we did it";
+"Why_we_did_it_content" = "Now we are driven by the idea that proper waste sorting not only helps keep our surroundings clean but also has a significant impact on the environment and climate.
+
+We created the app to bring like-minded people together, helping everyone understand Canadian waste management and spreading awareness about the positive environmental impact of sorting. Every action counts, and together we can make a positive impact on the planet!
+Join us on this journey for a cleaner, greener future.
+
+P.S. Please, don't be super judgmental, we are only two on the team and it's our first version, but we really wait and appreciate your feedback.";
+
+"Report_problem_content" = "Please describe your problem detailed as possible.";
+"Description" = "Description";
+"Add_screenshot" = "Add Screenshot";
+
+"Sort_learn" = "Sort & Learn";
+"Waste_wise_quiz" = "Waste Wise & Quiz";

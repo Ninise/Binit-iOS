@@ -24,11 +24,23 @@ struct SettingsView: View {
                 SettingsButtonItemView(title: LocalizedStringKey("Invite_friends"))
             })
             
-            SettingsButtonItemView(title: LocalizedStringKey("Feedback"))
-            SettingsButtonItemView(title: LocalizedStringKey("Contact_us"))
-            SettingsButtonItemView(title: LocalizedStringKey("About_us"))
+            NavigationLink(destination: FeedbackView(), label: {
+                SettingsButtonItemView(title: LocalizedStringKey("Feedback"))
+            })
+            
+            NavigationLink(destination: ContactUsView(), label: {
+                SettingsButtonItemView(title: LocalizedStringKey("Contact_us"))
+            })
+            
+            NavigationLink(destination: AboutUsView(), label: {
+                SettingsButtonItemView(title: LocalizedStringKey("About_us"))
+            })
+            
             SettingsButtonItemView(title: LocalizedStringKey("Rate_the_app"))
-            SettingsButtonItemView(title: LocalizedStringKey("Report_a_problem"))
+            
+            NavigationLink(destination: ReportProblemView(), label: {
+                SettingsButtonItemView(title: LocalizedStringKey("Report_a_problem"))
+            })
             
      
                 

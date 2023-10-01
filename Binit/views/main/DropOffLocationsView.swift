@@ -43,18 +43,12 @@ struct DropOffLocationsView: View {
                     
                 }
                 
-            
-                HStack {
-                    TextField(LocalizedStringKey("Message"), text: $message, axis: .vertical)
-                        .foregroundColor(.mainColor)
-                        .tint(.orangeColor)
-                        .lineLimit(5, reservesSpace: true)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 10)
-                }
-                .background(Color.searchBodyColor.opacity(0.1))
-                .cornerRadius(6)
-                .padding(.horizontal, 5)
+                AppDefaultTextFieldView(
+                    text: $message,
+                    hint: LocalizedStringKey("Message").stringValue(),
+                    lineLimit: 5
+                )
+                
                 
                 AppDefaultButton(
                     title: LocalizedStringKey("Send"),
