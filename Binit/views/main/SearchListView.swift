@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 
 struct SearchListView: View {
     
+    let searchWord: String
+    
     @State private var search: String = ""
     
     var body: some View {
@@ -51,6 +53,6 @@ struct SearchListView: View {
 
 struct SearchListView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchListView()
+        SearchListView(searchWord: "")
     }
 }

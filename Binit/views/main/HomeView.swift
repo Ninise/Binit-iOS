@@ -22,32 +22,36 @@ struct HomeView: View {
         ZStack {
             ScrollView (showsIndicators: false) {
                 VStack (alignment: .leading) {
-                    HStack {
-                        Image(searchIcon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                        
-                        Text(LocalizedStringKey("Search"))
-                            .font(.custom(FontUtils.FONT_REGULAR, size: 16))
-                            .foregroundColor(.searchTextColor.opacity(0.5))
-                        
-                        Spacer()
-                        
-                    }
-                    .padding()
-                    .background(Color.searchBodyColor.opacity(0.1))
-                    .cornerRadius(6)
-                    .frame(width: .infinity)
-                    .padding(.leading, PaddingConsts.pDefaultPadding20)
-                    .padding(.trailing, 30)
-                    .padding(.top, 15)
+                    NavigationLink(destination: SearchListView(searchWord: ""), label: {
+                        HStack {
+                            Image(searchIcon)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                            
+                            Text(LocalizedStringKey("Search"))
+                                .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                                .foregroundColor(.searchTextColor.opacity(0.5))
+                            
+                            Spacer()
+                            
+                        }
+                        .padding()
+                        .background(Color.searchBodyColor.opacity(0.1))
+                        .cornerRadius(6)
+                        .frame(width: .infinity)
+                        .padding(.leading, PaddingConsts.pDefaultPadding20)
+                        .padding(.trailing, 30)
+                        .padding(.top, 15)
+                    })
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
                             ForEach(tempSearchBubbles, id: \.self) { text in
-                                QuickSearchBubbleView(title: text)
+                                NavigationLink(destination: SearchListView(searchWord: text), label: {
+                                    QuickSearchBubbleView(title: text)
+                                })
                             }
                         }
                     }
@@ -69,11 +73,13 @@ struct HomeView: View {
                     
                     MainTextTitleView(title: LocalizedStringKey("Games"))
                     
-                    Image(gameImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: .infinity)
-                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    NavigationLink(destination: GamesListView(), label: {
+                        Image(gameImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: .infinity)
+                            .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    })
                     
                     MainTextTitleView(title: LocalizedStringKey("Good_to_know"))
                     

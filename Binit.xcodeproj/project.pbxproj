@@ -29,6 +29,7 @@
 		116C1C302ACA19000006879F /* GarbageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C2F2ACA19000006879F /* GarbageDetailsView.swift */; };
 		116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C322ACA24DC0006879F /* GamesListView.swift */; };
 		116C1C352ACA26EB0006879F /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C342ACA26EB0006879F /* SearchListView.swift */; };
+		116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		116C1C2F2ACA19000006879F /* GarbageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageDetailsView.swift; sourceTree = "<group>"; };
 		116C1C322ACA24DC0006879F /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		116C1C342ACA26EB0006879F /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
+		116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultNotButton.swift; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */,
 				116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */,
+				116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				1152D0712AC8E0D20067AE02 /* SettingsView.swift in Sources */,
 				116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,
+				116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */,
 				1152D06A2AC50A350067AE02 /* MainView.swift in Sources */,
 				1152D0652AC501E40067AE02 /* GarbageUtils.swift in Sources */,
 				11F6205B2AC25AEC005FB2EC /* SplashScreenView.swift in Sources */,

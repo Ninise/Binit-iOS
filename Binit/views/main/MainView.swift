@@ -28,41 +28,40 @@ struct MainView: View {
     
     
     var body: some View {
-        NavigationStack {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        TabItem(
-                            icon: homeIcon,
-                            text: LocalizedStringKey("Home").stringValue())
-                    }
-                
-                CollectionScheduleView()
-                    .tabItem {
-                        TabItem(
-                            icon: calendarIcon,
-                            text: LocalizedStringKey("Schedule").stringValue()
-                        )
-                    }
-                
-                DropOffLocationsView()
-                    .tabItem {
-                        TabItem(
-                            icon: locationIcon,
-                            text: LocalizedStringKey("Locations").stringValue()
-                        )
-                    }
-                
-                SettingsView()
-                    .tabItem {
-                        TabItem(
-                            icon: settingsIcon,
-                            text: LocalizedStringKey("Settings").stringValue()
-                        )
-                    }
-            }
-            .tint(.orangeColor)
+        TabView {
+            HomeView()
+                .tabItem {
+                    TabItem(
+                        icon: homeIcon,
+                        text: LocalizedStringKey("Home").stringValue())
+                }
+            
+            CollectionScheduleView()
+                .tabItem {
+                    TabItem(
+                        icon: calendarIcon,
+                        text: LocalizedStringKey("Schedule").stringValue()
+                    )
+                }
+            
+            DropOffLocationsView()
+                .tabItem {
+                    TabItem(
+                        icon: locationIcon,
+                        text: LocalizedStringKey("Locations").stringValue()
+                    )
+                }
+            
+            SettingsView()
+                .tabItem {
+                    TabItem(
+                        icon: settingsIcon,
+                        text: LocalizedStringKey("Settings").stringValue()
+                    )
+                }
         }
+        .navigationBarBackButtonHidden()
+        .tint(.orangeColor)
     }
 }
 

@@ -36,13 +36,13 @@ struct LandingView: View {
                     .padding(.top, -3)
                     .padding(.horizontal, 20)
                 
-                AppDefaultButton(
-                    title: LocalizedStringKey("Landing_dialog_button"),
-                    color: Color.orangeColor,
-                    callback: {
-                        
-                    })
-                .padding(.top, 5)
+                NavigationLink(destination: MainView(), label: {
+                    AppDefaultNotButton(
+                        title: LocalizedStringKey("Landing_dialog_button"),
+                        color: Color.orangeColor)
+                    .padding(.top, 5)
+                })
+                
                     
             }
             .padding(.top, 20)

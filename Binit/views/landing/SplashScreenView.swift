@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashScreenView: View {
     
     @State private var goToLanding: Bool = false
+    @State private var goToMain: Bool = false
     
     let binitImage = "ic_landing_binit"
     let whalescaleImage = "ic_landing_whalescale"
@@ -40,6 +41,8 @@ struct SplashScreenView: View {
     private var NavigationViews: some View {
         ZStack {
             NavigationLink(destination: LandingView(), isActive: $goToLanding, label: {})
+            
+            NavigationLink(destination: MainView(), isActive: $goToMain, label: {})
         }
     }
 }
