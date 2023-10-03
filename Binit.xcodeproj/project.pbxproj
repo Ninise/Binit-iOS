@@ -30,6 +30,8 @@
 		116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C322ACA24DC0006879F /* GamesListView.swift */; };
 		116C1C352ACA26EB0006879F /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C342ACA26EB0006879F /* SearchListView.swift */; };
 		116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */; };
+		116C1C3A2ACC27D80006879F /* BinitApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C392ACC27D80006879F /* BinitApi.swift */; };
+		116C1C3D2ACC28280006879F /* BinitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C3C2ACC28280006879F /* BinitRepository.swift */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 		116C1C322ACA24DC0006879F /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		116C1C342ACA26EB0006879F /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
 		116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultNotButton.swift; sourceTree = "<group>"; };
+		116C1C392ACC27D80006879F /* BinitApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApi.swift; sourceTree = "<group>"; };
+		116C1C3C2ACC28280006879F /* BinitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitRepository.swift; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,13 @@
 			path = games;
 			sourceTree = "<group>";
 		};
+		116C1C3B2ACC27F70006879F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		11F6201D2AC25A03005FB2EC = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +215,7 @@
 		11F620282AC25A03005FB2EC /* Binit */ = {
 			isa = PBXGroup;
 			children = (
+				116C1C3B2ACC27F70006879F /* New Group */,
 				1152D0562AC2611D0067AE02 /* extensions */,
 				11F620642AC25ECB005FB2EC /* Info.plist */,
 				11F6205F2AC25E75005FB2EC /* Fonts */,
@@ -250,6 +262,7 @@
 		11F620532AC25A2B005FB2EC /* network */ = {
 			isa = PBXGroup;
 			children = (
+				116C1C392ACC27D80006879F /* BinitApi.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -257,6 +270,7 @@
 		11F620542AC25A62005FB2EC /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				116C1C3C2ACC28280006879F /* BinitRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -475,9 +489,11 @@
 				116C1C352ACA26EB0006879F /* SearchListView.swift in Sources */,
 				1152D0712AC8E0D20067AE02 /* SettingsView.swift in Sources */,
 				116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */,
+				116C1C3A2ACC27D80006879F /* BinitApi.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,
 				116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */,
 				1152D06A2AC50A350067AE02 /* MainView.swift in Sources */,
+				116C1C3D2ACC28280006879F /* BinitRepository.swift in Sources */,
 				1152D0652AC501E40067AE02 /* GarbageUtils.swift in Sources */,
 				11F6205B2AC25AEC005FB2EC /* SplashScreenView.swift in Sources */,
 				116C1C222AC9AF1C0006879F /* FeedbackView.swift in Sources */,
