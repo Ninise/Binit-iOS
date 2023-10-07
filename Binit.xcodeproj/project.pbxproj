@@ -42,6 +42,11 @@
 		116C1C512ACE40670006879F /* BError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C502ACE40670006879F /* BError.swift */; };
 		116C1C532ACE40D30006879F /* BinitGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C522ACE40D30006879F /* BinitGenerics.swift */; };
 		116C1C562ACE41970006879F /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C552ACE41970006879F /* Article.swift */; };
+		11B87CD32AD0DF840057783B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD22AD0DF840057783B /* Product.swift */; };
+		11B87CD52AD0E01E0057783B /* QuickSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD42AD0E01E0057783B /* QuickSearch.swift */; };
+		11B87CD72AD0E1010057783B /* GarbageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD62AD0E1010057783B /* GarbageCategory.swift */; };
+		11B87CD92AD0E2230057783B /* RecycleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD82AD0E2230057783B /* RecycleType.swift */; };
+		11B87CDB2AD0E3580057783B /* QuizObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDA2AD0E3580057783B /* QuizObject.swift */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -100,6 +105,11 @@
 		116C1C502ACE40670006879F /* BError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BError.swift; sourceTree = "<group>"; };
 		116C1C522ACE40D30006879F /* BinitGenerics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitGenerics.swift; sourceTree = "<group>"; };
 		116C1C552ACE41970006879F /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		11B87CD22AD0DF840057783B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		11B87CD42AD0E01E0057783B /* QuickSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSearch.swift; sourceTree = "<group>"; };
+		11B87CD62AD0E1010057783B /* GarbageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageCategory.swift; sourceTree = "<group>"; };
+		11B87CD82AD0E2230057783B /* RecycleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecycleType.swift; sourceTree = "<group>"; };
+		11B87CDA2AD0E3580057783B /* QuizObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizObject.swift; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -224,6 +234,10 @@
 			isa = PBXGroup;
 			children = (
 				116C1C552ACE41970006879F /* Article.swift */,
+				11B87CD22AD0DF840057783B /* Product.swift */,
+				11B87CD42AD0E01E0057783B /* QuickSearch.swift */,
+				11B87CD62AD0E1010057783B /* GarbageCategory.swift */,
+				11B87CDA2AD0E3580057783B /* QuizObject.swift */,
 			);
 			path = responses;
 			sourceTree = "<group>";
@@ -326,6 +340,7 @@
 			children = (
 				116C1C542ACE41870006879F /* responses */,
 				116C1C4B2ACE3D100006879F /* requests */,
+				11B87CD82AD0E2230057783B /* RecycleType.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -524,9 +539,13 @@
 			files = (
 				11F6205D2AC25BE8005FB2EC /* LandingView.swift in Sources */,
 				116C1C512ACE40670006879F /* BError.swift in Sources */,
+				11B87CDB2AD0E3580057783B /* QuizObject.swift in Sources */,
 				116C1C2A2ACA0B010006879F /* ContactUsView.swift in Sources */,
 				1152D05E2AC264F10067AE02 /* AppDefaultButton.swift in Sources */,
 				1152D06E2AC7AAF40067AE02 /* DropOffLocationsView.swift in Sources */,
+				11B87CD52AD0E01E0057783B /* QuickSearch.swift in Sources */,
+				11B87CD72AD0E1010057783B /* GarbageCategory.swift in Sources */,
+				11B87CD32AD0DF840057783B /* Product.swift in Sources */,
 				1152D0732AC8E4050067AE02 /* InviteFriendView.swift in Sources */,
 				116C1C262AC9B5A40006879F /* AppDefaultTextFieldView.swift in Sources */,
 				116C1C2C2ACA10EF0006879F /* AboutUsView.swift in Sources */,
@@ -540,6 +559,7 @@
 				116C1C352ACA26EB0006879F /* SearchListView.swift in Sources */,
 				1152D0712AC8E0D20067AE02 /* SettingsView.swift in Sources */,
 				116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */,
+				11B87CD92AD0E2230057783B /* RecycleType.swift in Sources */,
 				116C1C4F2ACE3FD40006879F /* BinitRoutes.swift in Sources */,
 				116C1C3A2ACC27D80006879F /* BinitApi.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,

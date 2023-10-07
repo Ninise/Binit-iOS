@@ -20,8 +20,3 @@ struct Article: Codable {
     let items: [SubCategoryItem]
     
 }
-
-struct SubCategoryItem: Codable {
-    let title: String
-    let data: [String]
-}
