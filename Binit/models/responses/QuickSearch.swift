@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuickSearch: Codable {
+struct QuickSearch: Codable, Identifiable {
     let id: Int
     let name: String
 }

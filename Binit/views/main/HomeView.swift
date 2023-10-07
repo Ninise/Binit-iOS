@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct HomeView: View {
     
-    let tempSearchBubbles = ["meat", "styroform", "cup", "papper", "plastic cup"]
+    @StateObject var viewModel = MainViewModel()
     
     let tempTypes = [GarbageUtils.GARBAGE_TYPE, GarbageUtils.ORGANIC_TYPE, GarbageUtils.RECYCLE_TYPE, GarbageUtils.ELECTRONIC_WASTE_TYPE, GarbageUtils.HHW_TYPE, GarbageUtils.YARD_WASTE_TYPE]
     
@@ -48,9 +48,9 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
-                            ForEach(tempSearchBubbles, id: \.self) { text in
-                                NavigationLink(destination: SearchListView(searchWord: text), label: {
-                                    QuickSearchBubbleView(title: text)
+                            ForEach(viewModel.quickSearches, id: \.id) { text in
+                                NavigationLink(destination: SearchListView(searchWord: text.name), label: {
+                                    QuickSearchBubbleView(title: text.name)
                                 })
                             }
                         }
@@ -62,7 +62,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
-                            ForEach(tempTypes, id: \.self) { type in
+                            ForEach(viewModel.categories, id: \.self) { type in
                                 MainGarbageCardView(type: type)
                                     .padding(.trailing, 8)
                                 

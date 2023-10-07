@@ -15,5 +15,5 @@ struct QuizObject: Codable {
 struct AnswerObject: Codable {
     let answer: String
     let explanation: String
-    let isCorrect: Boolean
+    let isCorrect: Bool
 }

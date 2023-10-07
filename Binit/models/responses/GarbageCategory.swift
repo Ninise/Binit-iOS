@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct GarbageCategory: Codable {
+struct GarbageCategory: Codable, Identifiable {
+    
+    let id: Int
     let title: String
     let image: String
     let type: String
