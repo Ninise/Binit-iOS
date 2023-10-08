@@ -11,6 +11,7 @@ import SwiftUI
 
 class MainViewModel: NSObject, ObservableObject {
     
+    @Published var isLoading: Bool = false
     @Published var toast: String? = nil
     
     // Home screeb
@@ -77,17 +78,39 @@ class MainViewModel: NSObject, ObservableObject {
         
     }
     
-    func makeSuggestion(name: String, type: String, desc: String, location: String) {
-        let request = SuggestRequest(name: name, type: type, description: desc, location: location)
+    func makeSuggestion(name: String, type: String, desc: String, location: String, image: UIImage? = nil) {
+        self.isLoading = true
+        if let image = image {
+            FirebaseUtils.shared.uploadImage(image: image, completion: { url in
+                let request = SuggestRequest(name: name, type: type, description: "\(desc); URL:\(url ?? "failed_to_get_url")", location: location)
+                
+                BinitRepository.shared.makeSuggestion(request, completion: { result in
+                    switch result {
+                    case .success(_):
+                        self.toast = LocalizedStringKey("Request_send").stringValue()
+                    case .failure(let error):
+                        self.error = error
+                    }
+                    
+                    self.isLoading = false
+                })
+            })
+        } else {
+            let request = SuggestRequest(name: name, type: type, description: desc, location: location)
+            
+            BinitRepository.shared.makeSuggestion(request, completion: { result in
+                switch result {
+                case .success(_):
+                    self.toast = LocalizedStringKey("Request_send").stringValue()
+                case .failure(let error):
+                    self.error = error
+                }
+                
+                self.isLoading = false
+            })
+        }
         
-        BinitRepository.shared.makeSuggestion(request, completion: { result in
-            switch result {
-            case .success(_):
-                self.toast = LocalizedStringKey("Request_send").stringValue()
-            case .failure(let error):
-                self.error = error
-            }
-        })
+        
     }
     
 }

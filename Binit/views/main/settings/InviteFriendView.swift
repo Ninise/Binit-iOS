@@ -10,7 +10,7 @@ import SwiftUI
 struct InviteFriendView: View {
     
     let image = "ic_invite_friend_image"
-    let shareIcon = "ic_share"
+    let shareIcon = "ic_invite_share"
     
     var body: some View {
         VStack {
@@ -27,14 +27,15 @@ struct InviteFriendView: View {
                 .padding(.horizontal, 50)
                 .padding(.top, 20)
             
-            AppDefaultButton(
-                title: LocalizedStringKey("Share_with_friends"),
-                color: .orangeColor,
-                callback: {
-                
-            }, iconRight: shareIcon)
-            .padding(.top, 10)
-            .padding(.horizontal, 50)
+            
+            ShareLink(item: "https://binit.pro") {
+                AppDefaultNotButton(
+                    title: LocalizedStringKey("Share_with_friends"),
+                    color: .orangeColor,
+                    iconRight: shareIcon)
+                .padding(.top, 10)
+                .padding(.horizontal, 50)
+            }
             
             Spacer()
         }

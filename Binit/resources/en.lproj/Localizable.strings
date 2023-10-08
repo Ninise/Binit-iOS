@@ -83,3 +83,11 @@ P.S. Please, don't be super judgmental, we are only two on the team and it's our
 "Waste_wise_quiz" = "Waste Wise & Quiz";
 
 "Request_sent" = "Thank you for your request! We will carefully review it. :)";
+
+"No_search_result" = "Ooops, we don’t have this item in our garbage bins.\n Sorry, we will add it soon.";
+
+"Recycle" = "Recycle";
+"Garbage" = "Garbage";
+"Organic" = "Organic";
+"E_waste" = "E-Waste";
+"Household_hazardous" = "Household hazardous";
