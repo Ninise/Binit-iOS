@@ -12,9 +12,6 @@ struct HomeView: View {
     
     @StateObject var viewModel = MainViewModel()
     
-    let tempTypes = [GarbageUtils.GARBAGE_TYPE, GarbageUtils.ORGANIC_TYPE, GarbageUtils.RECYCLE_TYPE, GarbageUtils.ELECTRONIC_WASTE_TYPE, GarbageUtils.HHW_TYPE, GarbageUtils.YARD_WASTE_TYPE]
-    
-    
     let gameImage = "ic_main_game"
     let searchIcon = "ic_search"
     
@@ -62,10 +59,11 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
-                            ForEach(viewModel.categories, id: \.self) { type in
-                                MainGarbageCardView(type: type)
-                                    .padding(.trailing, 8)
-                                
+                            ForEach(viewModel.categories, id: \.id) { type in
+                                NavigationLink(destination: GarbageDetailsView(item: type), label: {
+                                    MainGarbageCardView(type: type)
+                                        .padding(.trailing, 8)
+                                })
                             }
                         }
                     }
@@ -82,62 +80,31 @@ struct HomeView: View {
                     })
                     
                     MainTextTitleView(title: LocalizedStringKey("Good_to_know"))
+                  
                     
-                    HStack (alignment: .top) {
-                        WebImage(url: URL(string: "https://www.colorado.edu/ecenter/sites/default/files/styles/large/public/callout/landfill_fire.png?itok=mJf5MN_C"))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(10)
+                    ForEach(viewModel.articles) { article in
+                        NavigationLink(destination: ArticleDetailsView(item: article), label: {
+                            MainArticleItemView(article: article)
+                        })
                         
-                        
-                        VStack (alignment: .leading, spacing: 5) {
-                            Text("Reuse.Reduce.Recycle")
-                                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
-                                .foregroundColor(.mainColor)
-                            
-                            Text("How to make lifestyle eco-friendly?")
-                                .font(.custom(FontUtils.FONT_REGULAR, size: 12))
-                                .foregroundColor(.mainArticleSubTitleColor)
-                        }
-                        .padding(.leading, 5)
-                        
-                        Spacer()
+                        Divider()
+                            .background(Color.mainColor.opacity(0.1))
+                            .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                            .padding(.vertical, 5)
+                      
                     }
-                    .padding(.horizontal, PaddingConsts.pDefaultPadding20)
                     
-                    Divider()
-                        .background(Color.mainColor.opacity(0.1))
-                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
-                        .padding(.vertical, 5)
                     
-                    HStack (alignment: .top) {
-                        WebImage(url: URL(string: "https://www.colorado.edu/ecenter/sites/default/files/styles/large/public/callout/landfill_fire.png?itok=mJf5MN_C"))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(10)
-                        
-                        
-                        VStack (alignment: .leading, spacing: 5) {
-                            Text("Reuse.Reduce.Recycle")
-                                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
-                                .foregroundColor(.mainColor)
-                            
-                            Text("How to make lifestyle eco-friendly?")
-                                .font(.custom(FontUtils.FONT_REGULAR, size: 12))
-                                .foregroundColor(.mainArticleSubTitleColor)
-                        }
-                        .padding(.leading, 5)
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal, PaddingConsts.pDefaultPadding20)
                     
                     
 
                 }
             }
+        }
+        .onAppear {
+            viewModel.getAllArticles()
+            viewModel.getGarbageCategories()
+            viewModel.getQuickSearchSuggestions()
         }
         .navigationBarBackButtonHidden()
     }
@@ -182,21 +149,51 @@ struct QuickSearchBubbleView: View {
 
 struct MainGarbageCardView: View {
     
-    let type: String
+    let type: GarbageCategory
     
     var body: some View {
         VStack {
             ZStack {
-                Image(GarbageUtils.getBinByType(type: type))
+                Image(GarbageUtils.getBinByType(type: type.type))
             }
             .padding(.vertical, PaddingConsts.pDefaultPadding20)
             .padding(.horizontal, 24)
             .background(Color.mainGarbageTypeBackColor)
             .cornerRadius(10)
             
-            Text(type)
+            Text(type.display_type)
                 .font(.custom(FontUtils.FONT_SEMIBOLD, size: 12))
                 .foregroundColor(.mainColor)
         }
+    }
+}
+
+struct MainArticleItemView: View {
+    
+    let article: Article
+    
+    var body: some View {
+        HStack (alignment: .top) {
+            WebImage(url: URL(string: article.image))
+                .resizable()
+                .scaledToFill()
+                .frame(width: 80, height: 80)
+                .cornerRadius(10)
+            
+            
+            VStack (alignment: .leading, spacing: 5) {
+                Text(article.title)
+                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
+                    .foregroundColor(.mainColor)
+                
+                Text(article.short_description)
+                    .font(.custom(FontUtils.FONT_REGULAR, size: 12))
+                    .foregroundColor(.mainArticleSubTitleColor)
+            }
+            .padding(.leading, 5)
+            
+            Spacer()
+        }
+        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
     }
 }

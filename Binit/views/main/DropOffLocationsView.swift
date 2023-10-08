@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DropOffLocationsView: View {
+    
+    @StateObject var viewModel = MainViewModel()
+    
     @State private var message: String = ""
     
     let image = "ic_drop_off_locations_image"
@@ -54,7 +57,16 @@ struct DropOffLocationsView: View {
                     title: LocalizedStringKey("Send"),
                     color: .orangeColor,
                     callback: {
-                    
+                        if (!message.isEmpty) {
+                            viewModel.makeSuggestion(
+                                name: SuggestionConsts.S_LOCATION_NAME,
+                                type: SuggestionConsts.S_SUGGESTION,
+                                desc: message,
+                                location: SuggestionConsts.S_IOS
+                            )
+                            
+                            message = ""
+                        }
                 })
                 .padding(.top, 5)
                 .padding(.horizontal, 5)

@@ -34,8 +34,9 @@ struct SplashScreenView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     goToLanding = true
                 })
+            }
         }
-        }
+        .accentColor(.orangeColor)
     }
     
     private var NavigationViews: some View {

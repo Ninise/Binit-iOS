@@ -9,7 +9,10 @@ import SwiftUI
 
 struct FeedbackView: View {
     
+    @StateObject var viewModel = MainViewModel()
+    
     @State private var email: String = ""
+    @State private var message: String = ""
     
     
     var body: some View {
@@ -51,7 +54,7 @@ struct FeedbackView: View {
                 .padding(.top, 2)
             
             AppDefaultTextFieldView(
-                text: $email,
+                text: $message,
                 hint: LocalizedStringKey("Message").stringValue(),
                 lineLimit: 5
             )
@@ -62,7 +65,19 @@ struct FeedbackView: View {
                 title: LocalizedStringKey("Send"),
                 color: .orangeColor,
                 callback: {
-                
+                    if (!email.isEmpty && !message.isEmpty) {
+                        viewModel.makeSuggestion(
+                            name: SuggestionConsts.S_FEEDBACK_NAME,
+                            type: SuggestionConsts.S_FEEDBACK,
+                            desc: "EMAIL: \(email); MESSAGE: \(message);",
+                            location: SuggestionConsts.S_IOS
+                        )
+                        
+                        email = ""
+                        message = ""
+                    }
+                    
+                 
             }, iconRight: nil)
             .padding(.top, 10)
             

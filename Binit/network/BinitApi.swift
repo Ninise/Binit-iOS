@@ -34,6 +34,7 @@ class BinitApi {
     
     
     static let provider = MoyaProvider<ApiService>(requestClosure: MoyaProvider<ApiService>.requestClosure(), plugins: [
+        NetworkLoggerPlugin(configuration: .init(logOptions: .verbose)),
         networkActivityPlugin
     ])
     
@@ -111,6 +112,7 @@ extension MoyaProvider {
     static func requestClosure() -> MoyaProvider<Target>.RequestClosure {
         return { endpoint, closure in
             let request = try! endpoint.urlRequest()
+            closure(.success(request))
             
         }
     }

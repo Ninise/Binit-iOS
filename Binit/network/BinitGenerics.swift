@@ -12,13 +12,13 @@ import Moya
 // MARK: - Response handling support
 
 struct EmptyResponse: Codable {
-    var success: Bool
+    var status: Bool
     var code: Int
     var dmsg: String?
     var umsg: String?
     
     enum CodingKeys: String, CodingKey {
-        case success
+        case status
         case code
         case dmsg
         case umsg
@@ -27,14 +27,14 @@ struct EmptyResponse: Codable {
 
 
 struct ArrayData<T: Codable>: Codable {
-    let success: Bool
+    let status: Bool
     let code: Int?
     let dmsg: String?
     let umsg: String?
     let data: [T]?
     
     enum CodingKeys: String, CodingKey {
-        case success
+        case status
         case code
         case dmsg
         case umsg
@@ -43,14 +43,14 @@ struct ArrayData<T: Codable>: Codable {
 }
 
 struct ObjectData<T: Codable>: Codable {
-    let success: Bool
+    let status: Bool
     let code: Int?
     let dmsg: String?
     let umsg: String?
     let data: T?
     
     enum CodingKeys: String, CodingKey {
-        case success
+        case status
         case code
         case dmsg
         case umsg
@@ -67,7 +67,7 @@ extension BinitApi {
                 let successData = try data.filterSuccessfulStatusCodes()
                 let response = try successData.map(EmptyResponse.self)
                 
-                guard response.success else {
+                guard response.status else {
                     return .failure(.serverAnswer(message: response.umsg ?? "Something went wrong"))
                 }
                 return .success(response)
@@ -86,7 +86,7 @@ extension BinitApi {
                 let successData = try data.filterSuccessfulStatusCodes()
                 let response = try successData.map(ObjectData<T>.self)
                 
-                guard response.success,
+                guard response.status,
                     let data = response.data else {
                         return .failure(.serverAnswer(message: response.umsg ?? "Something went wrong"))
                 }
@@ -109,7 +109,7 @@ extension BinitApi {
                 let successData = try data.filterSuccessfulStatusCodes()
                 let response = try successData.map(ArrayData<T>.self)
                 
-                guard response.success,
+                guard response.status,
                     let data = response.data else {
                         return .failure(.serverAnswer(message: response.umsg ?? "Something went wrong"))
                 }

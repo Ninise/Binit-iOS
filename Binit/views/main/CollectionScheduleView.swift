@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CollectionScheduleView: View {
     
+    @StateObject var viewModel = MainViewModel()
+    
     @State private var message: String = ""
     
     let image = "ic_collection_schedule_image"
@@ -44,7 +46,6 @@ struct CollectionScheduleView: View {
                     
                 }
                 
-            
                 AppDefaultTextFieldView(
                     text: $message,
                     hint: LocalizedStringKey("Message").stringValue(),
@@ -55,7 +56,16 @@ struct CollectionScheduleView: View {
                     title: LocalizedStringKey("Send"),
                     color: .orangeColor,
                     callback: {
-                    
+                        if (!message.isEmpty) {
+                            viewModel.makeSuggestion(
+                                name: SuggestionConsts.S_SCHEDULE_NAME,
+                                type: SuggestionConsts.S_SUGGESTION,
+                                desc: message,
+                                location: SuggestionConsts.S_IOS
+                            )
+                            
+                            message = ""
+                        }
                 })
                 .padding(.top, 5)
                 .padding(.horizontal, 5)

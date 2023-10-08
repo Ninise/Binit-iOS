@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+// todo add firebase image upload
+
 struct ReportProblemView: View {
+    
+    @StateObject var viewModel = MainViewModel()
     
     @State private var description: String = ""
     
@@ -49,7 +53,17 @@ struct ReportProblemView: View {
                 title: LocalizedStringKey("Send"),
                 color: .orangeColor,
                 callback: {
-                    
+                    if (!description.isEmpty) {
+                        
+                        viewModel.makeSuggestion(
+                            name: SuggestionConsts.S_PROBLEM_NAME,
+                            type: SuggestionConsts.S_PROBLEM,
+                            desc: description,
+                            location: SuggestionConsts.S_IOS
+                        )
+                        
+                        description = ""
+                    }
                 })
             .padding(.horizontal, 5)
             .padding(.top, 10)

@@ -35,7 +35,9 @@ struct GarbageCategory: Codable, Identifiable {
 }
 
 
-struct SubCategoryItem: Codable {
+struct SubCategoryItem: Codable, Identifiable {
+    let id = UUID()
+    
     let title: String
     let data: [String]
 }
