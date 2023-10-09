@@ -94,14 +94,11 @@ struct HomeView: View {
                       
                     }
                     
-                    
-                    
-                    
-
                 }
             }
         }
         .onAppear {
+            viewModel.getQuizQuestions()
             viewModel.getAllArticles()
             viewModel.getGarbageCategories()
             viewModel.getQuickSearchSuggestions()

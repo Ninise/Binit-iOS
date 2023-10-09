@@ -12,7 +12,8 @@ struct QuizObject: Codable {
     let answers: [AnswerObject]
 }
 
-struct AnswerObject: Codable {
+struct AnswerObject: Codable, Identifiable {
+    let id = UUID()
     let answer: String
     let explanation: String
     let isCorrect: Bool

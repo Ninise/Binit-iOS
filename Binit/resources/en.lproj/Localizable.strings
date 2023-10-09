@@ -20,7 +20,6 @@
 "Locations" = "Locations";
 "Settings" = "Settings";
 
-
 "Collection_schedule" = "Collection schedule";
 "Collection_schedule_subtitle" = "We are working on collection schedule now";
 "Collection_schedule_content" = "If you know someone who can help us and provide updating information about collecting schedule, please let us know.";
@@ -91,3 +90,15 @@ P.S. Please, don't be super judgmental, we are only two on the team and it's our
 "Organic" = "Organic";
 "E_waste" = "E-Waste";
 "Household_hazardous" = "Household hazardous";
+
+"Got_it" = "Got it!";
+"Congrats_5_title" = "Perfect score and a big win for our planet.";
+"Congrats_5_sub" = "Thank you for your commitment!";
+"Congrats_4_title" = "Amazing work! Your sorting skills help\nsave nature and our planet.";
+"Congrats_4_sub" = "You inspire others!";
+"Congrats_3_title" = "Fantastic job! You\'re saving nature and\nour planet with your sorting.";
+"Congrats_3_sub" = "Keep going!";
+"Congrats_2_title" = "Well done! Your sorting efforts make a\ndifference for nature and our planet.";
+"Congrats_1_title" = "Good effort! Your sorting can help save\nnature and our planet.";
+"Play_again" = "Play again";
+"Oooops" = "Oooops!";

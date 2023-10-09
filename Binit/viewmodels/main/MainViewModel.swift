@@ -75,7 +75,14 @@ class MainViewModel: NSObject, ObservableObject {
     }
     
     func getQuizQuestions() {
-        
+        BinitRepository.shared.getQuizQuestions(completion: { result in
+            switch result {
+            case .success(let response):
+                GameUtils.shared.saveQuizQuestions(questions: response)
+            case .failure(let error):
+                self.error = error
+            }
+        })
     }
     
     func makeSuggestion(name: String, type: String, desc: String, location: String, image: UIImage? = nil) {

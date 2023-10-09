@@ -28,10 +28,12 @@ struct GamesListView: View {
                 .foregroundColor(.mainColor)
                 .padding(.top, 10)
             
-            Image(secondGameImage)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(6)
+            NavigationLink(destination: QuizGameView(questions: GameUtils.shared.getBatchOfQuestions()), label: {
+                Image(secondGameImage)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(6)
+            })
             
             Spacer()
         }

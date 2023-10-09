@@ -18,7 +18,9 @@ extension String {
     static func localizedString(for key: String,
                                 locale: Locale = .current) -> String {
         
-        let language = locale.language.languageCode?.identifier
+//        let language = locale.language.languageCode?.identifier add traslation and selection
+        
+        let language = "en"
         let path = Bundle.main.path(forResource: language, ofType: "lproj")!
         let bundle = Bundle(path: path)!
         let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
