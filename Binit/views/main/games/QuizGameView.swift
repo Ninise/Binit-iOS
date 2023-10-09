@@ -13,6 +13,8 @@ struct QuizGameView: View {
     
     let questions: [QuizObject]
     
+    @State private var gameQuestions: [QuizObject] = []
+    
     @State private var starsCount: Int = 0
     
     @State private var currentQuestionNumber: Int = 1
@@ -20,7 +22,7 @@ struct QuizGameView: View {
     @State private var currentItem: AnswerObject? = nil
     @State private var showExplainDialog: Bool = false
     
-    @State private var showResultsDialog: Bool = true
+    @State private var showResultsDialog: Bool = false
     
     let arrowBackIcon = "ic_back_circle_arrow"
     let startIcon = "ic_start"
@@ -34,8 +36,8 @@ struct QuizGameView: View {
                 TopBarView
                 
                 if showResultsDialog {
-                    ResultsDialogView(count: 4, callback: {
-                        
+                    ResultsDialogView(count: starsCount, callback: {
+                        self.startAgain()
                     })
                 } else if showExplainDialog {
                     if let item = currentItem {
@@ -46,7 +48,9 @@ struct QuizGameView: View {
                         })
                     }
                 } else {
-                    QuestionDialog
+                    if gameQuestions.count > 0 {
+                        QuestionDialog
+                    }
                 }
                 
                 Spacer()
@@ -62,6 +66,9 @@ struct QuizGameView: View {
                 .offset(x: 380)
         )
         .navigationBarBackButtonHidden()
+        .onAppear {
+            gameQuestions.append(contentsOf: questions)
+        }
     }
     
     private var TopBarView: some View {
@@ -98,14 +105,14 @@ struct QuizGameView: View {
             Text("/5").font(.custom(FontUtils.FONT_REGULAR, size: 18))
                 .foregroundColor(.mainColor)
             
-            Text("\(questions[currentQuestionNumber - 1].question)")
+            Text("\(gameQuestions[currentQuestionNumber - 1].question)")
                 .font(.custom(FontUtils.FONT_SEMIBOLD, size: 18))
                 .foregroundColor(.mainColor)
                 .multilineTextAlignment(.center)
                 .padding(.vertical, 10)
             
             VStack {
-                ForEach(questions[currentQuestionNumber - 1].answers) { answer in
+                ForEach(gameQuestions[currentQuestionNumber - 1].answers) { answer in
                     AnswerButton(answer: answer, callback: { isCorrect in
                         if (isCorrect) {
                             starsCount += 1
@@ -114,12 +121,14 @@ struct QuizGameView: View {
                                 goToNext()
                             })
                         } else {
-                            if (!answer.explanation.isEmpty) {
-                                currentItem = answer
-                                showExplainDialog = true
-                            } else {
-                                goToNext()
-                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                                if (!answer.explanation.isEmpty) {
+                                    currentItem = answer
+                                    showExplainDialog = true
+                                } else {
+                                    goToNext()
+                                }
+                            })
                         }
                     })
                         .padding(.top, 5)
@@ -135,11 +144,24 @@ struct QuizGameView: View {
     }
     
     func goToNext() {
-        if (questions.count - 1 > currentQuestionNumber) {
+        if (gameQuestions.count > currentQuestionNumber) {
             currentQuestionNumber += 1
         } else {
-            // finish
+            if (gameQuestions.count == currentQuestionNumber) {
+                showResultsDialog = true
+            } else {
+                showExplainDialog = true
+            }
         }
+    }
+    
+    func startAgain() {
+        starsCount = 0
+        currentQuestionNumber = 1
+        showExplainDialog = false
+        showResultsDialog = false
+        gameQuestions.removeAll()
+        gameQuestions.append(contentsOf: GameUtils.shared.getBatchOfQuestions())
     }
 }
 
@@ -179,6 +201,7 @@ struct AnswerButton: View {
                 Text("\(answer.answer)")
                     .font(.custom(FontUtils.FONT_REGULAR, size: 18))
                     .foregroundColor(clicked ? .white : .mainColor)
+                    .multilineTextAlignment(.leading)
                 
                 Spacer()
                 
@@ -249,15 +272,17 @@ struct ResultsDialogView: View {
                 .font(.custom(FontUtils.FONT_BOLD, size: 18))
                 .foregroundColor(.orangeColor)
             
-            HStack {
-                Spacer()
-                ForEach((0...count), id: \.self){ _ in
-                    Image(startIcon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
+            if (count >= 1) {
+                HStack {
+                    Spacer()
+                    ForEach((0...count - 1), id: \.self){ _ in
+                        Image(startIcon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
             
             Text(GameUtils.shared.getCongratsTextBasedOnScore(score: count))

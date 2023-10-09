@@ -25,9 +25,9 @@ class GameUtils {
         let lastIndex = getData(type: LAST_QUESTION_INDEX)
         
         if (lastIndex + 5 < totalAmount) {
-            saveData(index: lastIndex + 5, type: LAST_QUESTION_INDEX)
+            saveData(index: lastIndex + 4, type: LAST_QUESTION_INDEX)
             var list: [QuizObject] = []
-            list.append(contentsOf: questionsList[lastIndex...lastIndex + 5])
+            list.append(contentsOf: questionsList[lastIndex...lastIndex + 4])
             return list
         } else {
             saveData(index: 0, type: LAST_QUESTION_INDEX)
@@ -35,7 +35,7 @@ class GameUtils {
             questionsList.shuffle()
             
             var list: [QuizObject] = []
-            list.append(contentsOf: questionsList[0...4])
+            list.append(contentsOf: questionsList[0...3])
             
             return list
         }
@@ -46,11 +46,11 @@ class GameUtils {
     }
     
     func getData(type: String) -> Int {
-        return 0
+        return UserDefaults.standard.integer(forKey: type)
     }
     
     func saveData(index: Int, type: String) {
-        // todo save last question index
+        UserDefaults.standard.set(index, forKey: type)
     }
  
     
