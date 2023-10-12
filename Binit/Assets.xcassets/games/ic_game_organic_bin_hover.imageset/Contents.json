@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_game_organic_bin_hover.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

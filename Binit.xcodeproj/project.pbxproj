@@ -42,6 +42,7 @@
 		116C1C512ACE40670006879F /* BError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C502ACE40670006879F /* BError.swift */; };
 		116C1C532ACE40D30006879F /* BinitGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C522ACE40D30006879F /* BinitGenerics.swift */; };
 		116C1C562ACE41970006879F /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C552ACE41970006879F /* Article.swift */; };
+		119270CB2AD774B50021E109 /* DragDropGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119270CA2AD774B50021E109 /* DragDropGameView.swift */; };
 		11B87CD32AD0DF840057783B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD22AD0DF840057783B /* Product.swift */; };
 		11B87CD52AD0E01E0057783B /* QuickSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD42AD0E01E0057783B /* QuickSearch.swift */; };
 		11B87CD72AD0E1010057783B /* GarbageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD62AD0E1010057783B /* GarbageCategory.swift */; };
@@ -121,6 +122,7 @@
 		116C1C502ACE40670006879F /* BError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BError.swift; sourceTree = "<group>"; };
 		116C1C522ACE40D30006879F /* BinitGenerics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitGenerics.swift; sourceTree = "<group>"; };
 		116C1C552ACE41970006879F /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		119270CA2AD774B50021E109 /* DragDropGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropGameView.swift; sourceTree = "<group>"; };
 		11B87CD22AD0DF840057783B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		11B87CD42AD0E01E0057783B /* QuickSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSearch.swift; sourceTree = "<group>"; };
 		11B87CD62AD0E1010057783B /* GarbageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageCategory.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				116C1C322ACA24DC0006879F /* GamesListView.swift */,
 				11DE11282AD414C5008812F8 /* QuizGameView.swift */,
+				119270CA2AD774B50021E109 /* DragDropGameView.swift */,
 			);
 			path = games;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				1152D0732AC8E4050067AE02 /* InviteFriendView.swift in Sources */,
 				116C1C262AC9B5A40006879F /* AppDefaultTextFieldView.swift in Sources */,
 				11F923BE2AD2F7C6002B40FD /* AttributedTextView.swift in Sources */,
+				119270CB2AD774B50021E109 /* DragDropGameView.swift in Sources */,
 				116C1C2C2ACA10EF0006879F /* AboutUsView.swift in Sources */,
 				116C1C2E2ACA13980006879F /* ReportProblemView.swift in Sources */,
 				11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */,

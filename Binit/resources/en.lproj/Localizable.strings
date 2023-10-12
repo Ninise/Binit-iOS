@@ -102,3 +102,7 @@ P.S. Please, don't be super judgmental, we are only two on the team and it's our
 "Congrats_1_title" = "Good effort! Your sorting can help save\nnature and our planet.";
 "Play_again" = "Play again";
 "Oooops" = "Oooops!";
+"Play" = "Play";
+
+"Game_drag_drop_rules_1" = "In this game, your task is to sort different types of garbage into the correct bins. Get ready to test your waste management skills and contribute to a cleaner environment!";
+"Game_drag_drop_rules_2" = "Drag each item and drop it into the appropriate bin:\nCompost, Recycling, or Waste.\nPay attention to the item's characteristics, such as material, food waste, or non-recyclable materials, to make the correct sorting decision.";
