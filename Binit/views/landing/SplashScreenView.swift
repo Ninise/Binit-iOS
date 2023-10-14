@@ -17,18 +17,23 @@ struct SplashScreenView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                NavigationViews
-                Spacer()
-                Image(binitImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 140)
-                Spacer()
-                Image(whalescaleImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100)
+            ZStack {
+                
+                Color.white.edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    NavigationViews
+                    Spacer()
+                    Image(binitImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 140)
+                    Spacer()
+                    Image(whalescaleImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                }
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -37,6 +42,7 @@ struct SplashScreenView: View {
             }
         }
         .accentColor(.orangeColor)
+    
     }
     
     private var NavigationViews: some View {

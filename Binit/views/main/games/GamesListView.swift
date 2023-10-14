@@ -18,10 +18,13 @@ struct GamesListView: View {
                 .font(.custom(FontUtils.FONT_BOLD, size: 18))
                 .foregroundColor(.mainColor)
             
-            Image(firstGameImage)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(6)
+            NavigationLink(destination: DragDropGameView(), label: {
+                Image(firstGameImage)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(6)
+            })
+            
             
             Text(LocalizedStringKey("Waste_wise_quiz"))
                 .font(.custom(FontUtils.FONT_BOLD, size: 18))
