@@ -57,6 +57,7 @@
 		11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDD2AD16DC50057783B /* MainViewModel.swift */; };
 		11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE11282AD414C5008812F8 /* QuizGameView.swift */; };
 		11DE112B2AD438A9008812F8 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE112A2AD438A9008812F8 /* GameUtils.swift */; };
+		11EACF082ADC8A1B00A51736 /* UIScreen+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -143,6 +144,7 @@
 		11B87CDD2AD16DC50057783B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		11DE11282AD414C5008812F8 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
 		11DE112A2AD438A9008812F8 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
+		11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+extensions.swift"; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				1152D0542AC260CC0067AE02 /* Color+extensions.swift */,
 				116C1C232AC9B37C0006879F /* Strings+extensions.swift */,
+				11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				116C1C4F2ACE3FD40006879F /* BinitRoutes.swift in Sources */,
 				110412A22ADBFFE800E15B86 /* DragState.swift in Sources */,
 				116C1C3A2ACC27D80006879F /* BinitApi.swift in Sources */,
+				11EACF082ADC8A1B00A51736 /* UIScreen+extensions.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,
 				116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */,
 				1152D06A2AC50A350067AE02 /* MainView.swift in Sources */,

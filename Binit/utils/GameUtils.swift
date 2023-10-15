@@ -97,9 +97,6 @@ class GameUtils {
             "ic_game_item_credit_card_garb",
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
-            "ic_game_item_cup_2_garb",
-            GarbageUtils.GARBAGE_TYPE),
-        GameObject(
             "ic_game_item_shopping_bags_garb",
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
@@ -127,7 +124,7 @@ class GameUtils {
             "ic_game_item_label_garb",
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
-            "ic_game_item_key_",
+            "ic_game_item_key_garb",
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
             "ic_game_item_wood_garb",
@@ -158,9 +155,6 @@ class GameUtils {
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
             "ic_game_item_styrofoam_box_garb",
-            GarbageUtils.GARBAGE_TYPE),
-        GameObject(
-            "ic_game_item_cup_2_garb",
             GarbageUtils.GARBAGE_TYPE),
         GameObject(
             "ic_game_item_tube_garb",
@@ -220,31 +214,10 @@ class GameUtils {
             "ic_game_item_pizza_2_org",
             GarbageUtils.ORGANIC_TYPE),
         GameObject(
-            "ic_game_item_pizza_3_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
             "ic_game_item_coffee_beans_org",
             GarbageUtils.ORGANIC_TYPE),
         GameObject(
-            "ic_game_item_pie_2_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
-            "ic_game_item_pie_3_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
-            "ic_game_item_bread_2_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
-            "ic_game_item_sandwich",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
             "ic_game_item_diaper_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
-            "ic_game_item_flower_org",
-            GarbageUtils.ORGANIC_TYPE),
-        GameObject(
-            "ic_game_item_egg_shell_org",
             GarbageUtils.ORGANIC_TYPE),
         GameObject(
             "ic_game_item_tea_bug_org",
@@ -262,16 +235,10 @@ class GameUtils {
             "ic_game_item_glass_bottle_2_rec",
             GarbageUtils.RECYCLE_TYPE),
         GameObject(
-            "ic_game_item_notebook_2_rec",
-            GarbageUtils.RECYCLE_TYPE),
-        GameObject(
             "ic_game_item_canned_food_3_rec",
             GarbageUtils.RECYCLE_TYPE),
         GameObject(
             "ic_game_item_can_rec",
-            GarbageUtils.RECYCLE_TYPE),
-        GameObject(
-            "ic_game_item_cardbord_rec",
             GarbageUtils.RECYCLE_TYPE),
         GameObject(
             "ic_game_item_tissue_box_rec",
@@ -307,9 +274,6 @@ class GameUtils {
             "ic_game_item_toilet_paper_rec",
             GarbageUtils.RECYCLE_TYPE),
         GameObject(
-            "ic_game_item_notebook_2_rec",
-            GarbageUtils.RECYCLE_TYPE),
-        GameObject(
             "ic_game_item_newspaper_rec",
             GarbageUtils.RECYCLE_TYPE),
         GameObject(
@@ -320,13 +284,10 @@ class GameUtils {
     func getBatchOfItems() -> [GameObject] {
         
         let totalAmount = gameSet.count
-        
-        Utils.log("getBatchOfItems: TOTAL \(totalAmount)")
-        
+                
         let lastIndex = getData(type: LAST_GAME_INDEX)
-        
+                
         if (lastIndex == 0) {
-            Utils.log("getBatchOfItems: lastIndex == 0 -> shuffle")
             gameSet.shuffle()
         }
         
@@ -335,9 +296,7 @@ class GameUtils {
             
             var list: [GameObject] = []
             list.append(contentsOf: gameSet[lastIndex...lastIndex + 9])
-            
-            Utils.log("getBatchOfItems: lastIndex + 10 < totalAmount -> \(list.count)")
-            
+                        
             return list
         } else {
             saveData(index: 0, type: LAST_GAME_INDEX)
@@ -346,9 +305,7 @@ class GameUtils {
             
             var list: [GameObject] = []
             list.append(contentsOf: gameSet[0...9])
-            
-            Utils.log("getBatchOfItems: index == 0 -> \(list.count)")
-            
+                        
             return list
         }
         

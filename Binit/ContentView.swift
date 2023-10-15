@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        SplashScreenView()
+        ZStack {
+            
+            Color.white
+                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+                .ignoresSafeArea()
+
+            SplashScreenView()
+        }
+
+        
     }
 }
 

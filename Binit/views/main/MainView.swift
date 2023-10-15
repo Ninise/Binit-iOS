@@ -62,6 +62,8 @@ struct MainView: View {
         }
         .navigationBarBackButtonHidden()
         .tint(.orangeColor)
+        .preferredColorScheme(.light)
+
     }
 }
 

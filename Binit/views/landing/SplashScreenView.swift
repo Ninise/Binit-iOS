@@ -19,8 +19,6 @@ struct SplashScreenView: View {
         NavigationView {
             ZStack {
                 
-                Color.white.edgesIgnoringSafeArea(.all)
-                
                 VStack {
                     NavigationViews
                     Spacer()
@@ -42,6 +40,7 @@ struct SplashScreenView: View {
             }
         }
         .accentColor(.orangeColor)
+        .preferredColorScheme(.light)
     
     }
     
