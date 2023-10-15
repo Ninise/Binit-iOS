@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_game_item_coffee_filter_org.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

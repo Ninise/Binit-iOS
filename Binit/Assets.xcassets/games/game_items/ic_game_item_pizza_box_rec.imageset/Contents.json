@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_game_item_pizza_box_rec.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

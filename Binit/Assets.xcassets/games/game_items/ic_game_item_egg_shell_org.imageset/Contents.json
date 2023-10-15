@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_game_item_egg_shell_org.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

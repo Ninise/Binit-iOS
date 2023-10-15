@@ -18,7 +18,9 @@ struct GamesListView: View {
                 .font(.custom(FontUtils.FONT_BOLD, size: 18))
                 .foregroundColor(.mainColor)
             
-            NavigationLink(destination: DragDropGameView(), label: {
+            NavigationLink(destination: DragDropGameView(
+                gameSet: GameUtils.shared.getBatchOfItems()
+            ), label: {
                 Image(firstGameImage)
                     .resizable()
                     .scaledToFit()

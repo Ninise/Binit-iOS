@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110412A22ADBFFE800E15B86 /* DragState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412A12ADBFFE800E15B86 /* DragState.swift */; };
+		110412A42ADC000C00E15B86 /* DragableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412A32ADC000C00E15B86 /* DragableObject.swift */; };
+		110412A62ADC003500E15B86 /* DropAreaOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412A52ADC003500E15B86 /* DropAreaOverlay.swift */; };
+		110412A82ADC006800E15B86 /* DropReceivableObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412A72ADC006800E15B86 /* DropReceivableObservableObject.swift */; };
+		110412AA2ADC007E00E15B86 /* DropReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412A92ADC007E00E15B86 /* DropReceiver.swift */; };
+		110412AC2ADC00A100E15B86 /* Utility+onRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110412AB2ADC00A100E15B86 /* Utility+onRotate.swift */; };
 		1152D0532AC260490067AE02 /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0522AC260490067AE02 /* FontUtils.swift */; };
 		1152D0552AC260CC0067AE02 /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0542AC260CC0067AE02 /* Color+extensions.swift */; };
 		1152D0592AC263F20067AE02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1152D05B2AC263F20067AE02 /* Localizable.strings */; };
@@ -93,6 +99,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110412A12ADBFFE800E15B86 /* DragState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragState.swift; sourceTree = "<group>"; };
+		110412A32ADC000C00E15B86 /* DragableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableObject.swift; sourceTree = "<group>"; };
+		110412A52ADC003500E15B86 /* DropAreaOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAreaOverlay.swift; sourceTree = "<group>"; };
+		110412A72ADC006800E15B86 /* DropReceivableObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropReceivableObservableObject.swift; sourceTree = "<group>"; };
+		110412A92ADC007E00E15B86 /* DropReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropReceiver.swift; sourceTree = "<group>"; };
+		110412AB2ADC00A100E15B86 /* Utility+onRotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+onRotate.swift"; sourceTree = "<group>"; };
 		1152D0522AC260490067AE02 /* FontUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtils.swift; sourceTree = "<group>"; };
 		1152D0542AC260CC0067AE02 /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		1152D05A2AC263F20067AE02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -194,6 +206,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		110412A02ADBFFCF00E15B86 /* drag_and_drop */ = {
+			isa = PBXGroup;
+			children = (
+				110412A12ADBFFE800E15B86 /* DragState.swift */,
+				110412A32ADC000C00E15B86 /* DragableObject.swift */,
+				110412A52ADC003500E15B86 /* DropAreaOverlay.swift */,
+				110412A72ADC006800E15B86 /* DropReceivableObservableObject.swift */,
+				110412A92ADC007E00E15B86 /* DropReceiver.swift */,
+				110412AB2ADC00A100E15B86 /* Utility+onRotate.swift */,
+			);
+			path = drag_and_drop;
+			sourceTree = "<group>";
+		};
 		1152D0562AC2611D0067AE02 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +231,7 @@
 		1152D05C2AC264DA0067AE02 /* custom_views */ = {
 			isa = PBXGroup;
 			children = (
+				110412A02ADBFFCF00E15B86 /* drag_and_drop */,
 				1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */,
 				116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */,
 				116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */,
@@ -605,15 +631,19 @@
 				116C1C262AC9B5A40006879F /* AppDefaultTextFieldView.swift in Sources */,
 				11F923BE2AD2F7C6002B40FD /* AttributedTextView.swift in Sources */,
 				119270CB2AD774B50021E109 /* DragDropGameView.swift in Sources */,
+				110412AA2ADC007E00E15B86 /* DropReceiver.swift in Sources */,
 				116C1C2C2ACA10EF0006879F /* AboutUsView.swift in Sources */,
 				116C1C2E2ACA13980006879F /* ReportProblemView.swift in Sources */,
 				11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */,
 				11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */,
 				11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */,
 				1152D0532AC260490067AE02 /* FontUtils.swift in Sources */,
+				110412A42ADC000C00E15B86 /* DragableObject.swift in Sources */,
 				116C1C4D2ACE3D2C0006879F /* SuggestRequest.swift in Sources */,
 				116C1C562ACE41970006879F /* Article.swift in Sources */,
+				110412A62ADC003500E15B86 /* DropAreaOverlay.swift in Sources */,
 				11F923D12AD35E50002B40FD /* Utils.swift in Sources */,
+				110412AC2ADC00A100E15B86 /* Utility+onRotate.swift in Sources */,
 				1152D0552AC260CC0067AE02 /* Color+extensions.swift in Sources */,
 				1152D0612AC3B4C70067AE02 /* HomeView.swift in Sources */,
 				116C1C352ACA26EB0006879F /* SearchListView.swift in Sources */,
@@ -621,6 +651,7 @@
 				116C1C332ACA24DC0006879F /* GamesListView.swift in Sources */,
 				11B87CD92AD0E2230057783B /* RecycleType.swift in Sources */,
 				116C1C4F2ACE3FD40006879F /* BinitRoutes.swift in Sources */,
+				110412A22ADBFFE800E15B86 /* DragState.swift in Sources */,
 				116C1C3A2ACC27D80006879F /* BinitApi.swift in Sources */,
 				11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */,
 				116C1C372ACB97F30006879F /* AppDefaultNotButton.swift in Sources */,
@@ -639,6 +670,7 @@
 				1152D06C2AC7A3280067AE02 /* CollectionScheduleView.swift in Sources */,
 				116C1C532ACE40D30006879F /* BinitGenerics.swift in Sources */,
 				116C1C302ACA19000006879F /* GarbageDetailsView.swift in Sources */,
+				110412A82ADC006800E15B86 /* DropReceivableObservableObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

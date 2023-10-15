@@ -11,25 +11,47 @@ struct DragDropGameView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    let gameSet: [GameObject]
+    
+    @State var organicDADVM = DragAndDropViewModel()
+    @State var recycleDADVM = DragAndDropViewModel()
+    @State var garbageDADVM = DragAndDropViewModel()
+    
     @State private var showRulesScreen: Bool = true
     @State private var starsCount: Int = 0
-
-    @GestureState var locationState = CGPoint(x: 100, y: 100)
-    @State var location = CGPoint(x: 100, y: 100)
     
+    @State private var currentItem: GameObject? = nil
+    @State private var workGameSet: [GameObject] = []
+    
+    @State private var organicBinStatus: Int = 0
+    @State private var recycleBinStatus: Int = 0
+    @State private var garbageBinStatus: Int = 0
     
     let backButtonIcon = "ic_back_circle_arrow"
     let boyImage = "ic_game_boy"
+
     let organicBinImage = "ic_game_organic_bin_def"
+    let organicBinImageHover = "ic_game_organic_bin_hover"
+    let organicBinImageMistake = "ic_game_organic_bin_mistake"
+    let organicBinImageCorrect = "ic_game_organic_bin_correct"
+
     let recycleBinImage = "ic_game_recycle_bin_def"
+    let recycleBinImageHover = "ic_game_recycle_bin_hover"
+    let recycleBinImageMistake = "ic_game_recycle_bin_mistake"
+    let recycleBinImageCorrect = "ic_game_recycle_bin_correct"
+    
     let garbageBinImage = "ic_game_garbage_bin_def"
+    let garbageBinImageHover = "ic_game_garbage_bin_hover"
+    let garbageBinImageMistake = "ic_game_garbage_bin_mistake"
+    let garbageBinImageCorrect = "ic_game_garbage_bin_correct"
+    
     let backImage = "ic_game_drag_drop_back"
     let startIcon = "ic_start"
 
     let gameIcon = "ic_game_banana"
     
-    let binWidth = 80.0
-    let binHeight = 120.0
+    let binWidth = 85.0
+    let binHeight = 125.0
     
     let elementSize = 50.0
     
@@ -50,93 +72,221 @@ struct DragDropGameView: View {
             
             
             VStack {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Image(backButtonIcon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                    })
-                    
-                    Spacer()
-                    
-                    Image(startIcon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                    
-                    Text("\(starsCount)")
-                        .font(.custom(FontUtils.FONT_BOLD, size: 24))
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 200)
+//                HStack {
+//                    Spacer()
+//                    Button(action: {
+//                        dismiss()
+//                    }, label: {
+//                        Image(backButtonIcon)
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 40, height: 40)
+//                    })
+//                    
+//                    Spacer()
+//                    
+//                   
+//                    
+//                    Spacer()
+//                }
+//                .padding(.horizontal, 200)
                 
                 Spacer()
                 
                 HStack (spacing: 50) {
-                    Image(organicBinImage)
+                    Image(getOrganicStatusIcon())
                         .resizable()
                         .scaledToFit()
                         .frame(width: binWidth, height: binHeight)
-                        .onAppear {
-                            checkOverlap()
-                        }
+                        .dropReceiver(for: organicDADVM.dropReceiver, model: organicDADVM)
+
                     
-                    Image(recycleBinImage)
+                    Image(getRecycleStatusIcon())
                         .resizable()
                         .scaledToFit()
                         .frame(width: binWidth, height: binHeight)
-                        .gesture(
-                            DragGesture().onChanged({ drag in
-                                Utils.log("drag on recycle")
-                            })
-                        )
+                        .dropReceiver(for: recycleDADVM.dropReceiver, model: recycleDADVM)
+
                     
-                    Image(garbageBinImage)
+                    Image(getGarbageStatusIcon())
                         .resizable()
                         .scaledToFit()
                         .frame(width: binWidth, height: binHeight)
+                        .dropReceiver(for: garbageDADVM.dropReceiver, model: garbageDADVM)
+                        
+
                 }
             }
             
             
-            Image(gameIcon)
-                .resizable()
-                .scaledToFit()
-//                .position(locationState)
-                .position(location)
-                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            self.location = value.location
-                                        }
-                                        .updating(
-                                            self.$locationState
-                                        ) { currentState, pastLocation, transaction  in
-                                            pastLocation = currentState.location
-                                            transaction.animation = .easeInOut
-                                        }
-
-                                )
-                .frame(width: elementSize, height: elementSize)
+            if let item = currentItem {
+                Image(item.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: elementSize, height: elementSize)
+                    .dragable(onDragged: onDragged(position:), onDropped: onDropped(position:))
+            }
                 
         }
-        .navigationBarBackButtonHidden()
+        .toolbarRole(.editor)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Image(startIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                
+                Text("\(starsCount)")
+                    .font(.custom(FontUtils.FONT_BOLD, size: 24))
+                    .foregroundColor(.white)
+            })
+        }
+        .onAppear {
+            workGameSet = gameSet
+            randomElement()
+        }
     }
     
-    func checkOverlap() {
-          let draggableFrame = CGRect(origin: location, size: CGSize(width: elementSize, height: elementSize))
-          let targetFrame = CGRect(x: 0, y: 0, width: 200, height: 200)
+    func onDragged(position: CGPoint) -> DragState {
+        
+        if organicDADVM.dropReceiver.getDropArea()!.contains(position) {
+            organicBinStatus = 1
+            return .unknown
+        }
+        
+        if garbageDADVM.dropReceiver.getDropArea()!.contains(position) {
+            garbageBinStatus = 1
+            return .unknown
+        }
+        
+        if recycleDADVM.dropReceiver.getDropArea()!.contains(position) {
+            recycleBinStatus = 1
+            return .unknown
+        }
+        
+        organicBinStatus = 0
+        garbageBinStatus = 0
+        recycleBinStatus = 0
+        
+        return .unknown
 
-          if draggableFrame.intersects(targetFrame) {
-              print("Overlap detected!")
-          }
-      }
+     }
+     
+     func onDropped(position: CGPoint) -> Bool {
+         
+         if let item = currentItem {
+
+             resetIconsState()
+             
+             if organicDADVM.dropReceiver.getDropArea()!.contains(position) {
+                 
+                 if (item.type == GarbageUtils.ORGANIC_TYPE) {
+                     organicBinStatus = 3
+                     starsCount += 1
+                     return true
+                 } else {
+                     organicBinStatus = 2
+                     return false
+                 }
+                 
+             }
+             
+             if garbageDADVM.dropReceiver.getDropArea()!.contains(position) {
+                 
+                 if (item.type == GarbageUtils.GARBAGE_TYPE) {
+                     garbageBinStatus = 3
+                     starsCount += 1
+                     return true
+                 } else {
+                     garbageBinStatus = 2
+                     return false
+                 }
+                 
+             }
+             
+             if recycleDADVM.dropReceiver.getDropArea()!.contains(position) {
+                 
+                 if (item.type == GarbageUtils.RECYCLE_TYPE) {
+                     recycleBinStatus = 3
+                     starsCount += 1
+                     return true
+                 } else {
+                     recycleBinStatus = 2
+                     return false
+                 }
+                 
+             }
+             
+         }
+         
+         return false
+         
+     }
+    
+    private func resetIconsState() {
+        Utils.log("RESET ICON STATE")
+        if let item = currentItem {
+            Utils.log("WORK GAME SET BEFORE \(item.image); \(workGameSet.count)")
+            workGameSet = workGameSet.filter { $0.image != item.image }
+            Utils.log("WORK GAME SET AFTER \(item.image); \(workGameSet.count)")
+            currentItem = nil
+            
+            Utils.log("WORK GAME SET MADE NIL")
+            
+            randomElement()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            organicBinStatus = 0
+            recycleBinStatus = 0
+            garbageBinStatus = 0
+        })
+        
+    }
+    
+    private func getOrganicStatusIcon() -> String {
+        switch organicBinStatus {
+        case 0: return organicBinImage
+        case 1: return organicBinImageHover
+        case 2: return organicBinImageMistake
+        case 3: return organicBinImageCorrect
+        default:
+            return organicBinImage
+            
+        }
+    }
+    
+    private func getRecycleStatusIcon() -> String {
+        switch recycleBinStatus {
+        case 0: return recycleBinImage
+        case 1: return recycleBinImageHover
+        case 2: return recycleBinImageMistake
+        case 3: return recycleBinImageCorrect
+        default:
+            return recycleBinImage
+            
+        }
+    } 
+    
+    private func getGarbageStatusIcon() -> String {
+        switch garbageBinStatus {
+        case 0: return garbageBinImage
+        case 1: return garbageBinImageHover
+        case 2: return garbageBinImageMistake
+        case 3: return garbageBinImageCorrect
+        default:
+            return garbageBinImage
+            
+        }
+    }
+    
+    private func randomElement() {
+        
+        if let elem = workGameSet.randomElement() {
+            Utils.log(elem.image)
+            currentItem = elem
+        }
+    }
     
     private var RulesView: some View {
         HStack (alignment: .bottom) {
@@ -181,15 +331,10 @@ struct DragDropGameView: View {
         }
     }
     
-    private func changeOrientation(isPortrait: Bool) {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: isPortrait ? .portrait : .landscape))
-        }
-    }
 }
 
 #Preview {
-    DragDropGameView()
+    DragDropGameView(gameSet: [])
 }
 
 struct RulesDialogView: View {
@@ -239,4 +384,18 @@ struct RulesDialogView: View {
         .cornerRadius(10)
     }
     
+}
+
+struct MyDropReceiver: DropReceiver {
+    var dropArea: CGRect? = nil
+}
+
+class DragAndDropViewModel: DropReceivableObservableObject {
+    typealias DropReceivable = MyDropReceiver
+    
+    var dropReceiver = MyDropReceiver()
+        
+    func setDropArea(_ dropArea: CGRect, on dropReceiver: DropReceivable) {
+        self.dropReceiver.updateDropArea(with: dropArea)
+    }
 }
