@@ -17,108 +17,105 @@ struct SearchListView: View {
     @State private var search: String = ""
     
     var body: some View {
-        ZStack {
-            VStack {
-                
-                Text("")
-                            
-                if (search.isEmpty) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            Spacer(minLength: PaddingConsts.pDefaultPadding20)
-                            ForEach(viewModel.quickSearches, id: \.id) { text in
-                                QuickSearchBubbleView(title: text.name)
-                                    .onTapGesture {
-                                        search = text.name
-                                    }
-                            }
+        VStack {
+
+            
+            if (search.isEmpty) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        Spacer(minLength: PaddingConsts.pDefaultPadding20)
+                        ForEach(viewModel.quickSearches, id: \.id) { text in
+                            QuickSearchBubbleView(title: text.name)
+                                .onTapGesture {
+                                    search = text.name
+                                }
                         }
                     }
                 }
+            }
+            
+            List {
                 
-                List {
-                    
-                    if (!search.isEmpty && viewModel.items.isEmpty && !viewModel.isLoading) {
-                        VStack (alignment: .center) {
-                            HStack {
-                                Spacer()
-                                Image(GarbageUtils.getBinByType(type: GarbageUtils.ORGANIC_TYPE))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-                                Image(GarbageUtils.getBinByType(type: GarbageUtils.RECYCLE_TYPE))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-                                Image(GarbageUtils.getBinByType(type: GarbageUtils.GARBAGE_TYPE))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-                                
-                                Spacer()
-                            }
-                            
-                            Text(LocalizedStringKey("No_search_result"))
-                                .multilineTextAlignment(.center)
-                                .font(.custom(FontUtils.FONT_REGULAR, size: 16))
-                                .foregroundColor(.mainColor)
+                if (!search.isEmpty && viewModel.items.isEmpty && !viewModel.isLoading) {
+                    VStack (alignment: .center) {
+                        HStack {
+                            Spacer()
+                            Image(GarbageUtils.getBinByType(type: GarbageUtils.ORGANIC_TYPE))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                            Image(GarbageUtils.getBinByType(type: GarbageUtils.RECYCLE_TYPE))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                            Image(GarbageUtils.getBinByType(type: GarbageUtils.GARBAGE_TYPE))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
                             
                             Spacer()
                         }
-                        .listRowSeparator(.hidden)
-                        .padding(.top, 100)
-                    }
-                    
-                    if (search.isEmpty) {
-                        QuickSearchItem(type: GarbageUtils.GARBAGE_TYPE, title: LocalizedStringKey("Garbage").stringValue(), callback: { type in
-                            search = GarbageUtils.GARBAGE_TYPE
-                        })
                         
-                        QuickSearchItem(type: GarbageUtils.RECYCLE_TYPE, title: LocalizedStringKey("Recycle").stringValue(), callback: { type in
-                            search = GarbageUtils.RECYCLE_TYPE
-                        })
-                        
-                        QuickSearchItem(type: GarbageUtils.ORGANIC_TYPE, title: LocalizedStringKey("Organic").stringValue(), callback: { type in
-                            search = GarbageUtils.ORGANIC_TYPE
-                        })
-                        
-                        QuickSearchItem(type: GarbageUtils.ELECTRONIC_WASTE_TYPE, title: LocalizedStringKey("E_waste").stringValue(), callback: { type in
-                            search = GarbageUtils.ELECTRONIC_WASTE_TYPE
-                        })
-                        
-                        QuickSearchItem(type: GarbageUtils.HHW_TYPE, title: LocalizedStringKey("Household_hazardous").stringValue(), callback: { type in
-                            search = GarbageUtils.HHW_TYPE
-                        })
-                    } else {
-                        ForEach(viewModel.items) { item in
-                            SearchItemView(item: item)
-                                .padding(.vertical, 5)
-                        }
-                    }
-                    
-                    if (!viewModel.items.isEmpty) {
-                        Text("End of search...")
+                        Text(LocalizedStringKey("No_search_result"))
+                            .multilineTextAlignment(.center)
                             .font(.custom(FontUtils.FONT_REGULAR, size: 16))
                             .foregroundColor(.mainColor)
-                            .onAppear {
-                                if !viewModel.isLoading {
-                                    viewModel.search(query: search)
-                                }
-                            }
-                            .listRowSeparator(.hidden)
+                        
+                        Spacer()
+                    }
+                    .listRowSeparator(.hidden)
+                    .padding(.top, 100)
+                }
+                
+                if (search.isEmpty) {
+                    QuickSearchItem(type: GarbageUtils.GARBAGE_TYPE, title: LocalizedStringKey("Garbage").stringValue(), callback: { type in
+                        search = GarbageUtils.GARBAGE_TYPE
+                    })
+                    
+                    QuickSearchItem(type: GarbageUtils.RECYCLE_TYPE, title: LocalizedStringKey("Recycle").stringValue(), callback: { type in
+                        search = GarbageUtils.RECYCLE_TYPE
+                    })
+                    
+                    QuickSearchItem(type: GarbageUtils.ORGANIC_TYPE, title: LocalizedStringKey("Organic").stringValue(), callback: { type in
+                        search = GarbageUtils.ORGANIC_TYPE
+                    })
+                    
+                    QuickSearchItem(type: GarbageUtils.ELECTRONIC_WASTE_TYPE, title: LocalizedStringKey("E_waste").stringValue(), callback: { type in
+                        search = GarbageUtils.ELECTRONIC_WASTE_TYPE
+                    })
+                    
+                    QuickSearchItem(type: GarbageUtils.HHW_TYPE, title: LocalizedStringKey("Household_hazardous").stringValue(), callback: { type in
+                        search = GarbageUtils.HHW_TYPE
+                    })
+                } else {
+                    ForEach(viewModel.items) { item in
+                        SearchItemView(item: item)
+                            .padding(.vertical, 5)
                     }
                 }
-                .listRowSeparator(.hidden)
-                .listStyle(.plain)
-               
                 
+                if (!viewModel.items.isEmpty) {
+                    Text("End of search...")
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                        .foregroundColor(.mainColor)
+                        .onAppear {
+                            if !viewModel.isLoading {
+                                viewModel.search(query: search)
+                            }
+                        }
+                        .listRowSeparator(.hidden)
+                }
             }
-            .searchable(text: $search)
-            .onChange(of: search, perform: { newValue in
-                viewModel.search(query: newValue)
-            })
+            .listStyle(.plain)
+            .navigationTitle("Search products")
+            
+
+                    
         }
-        .ignoresSafeArea(.keyboard,edges: [.bottom])
+        .searchable(text: $search)
+        .onChange(of: search, perform: { newValue in
+            viewModel.search(query: newValue)
+        })
         .onAppear {
             search = searchWord
             viewModel.getQuickSearchSuggestions()
@@ -126,6 +123,7 @@ struct SearchListView: View {
     }
    
 }
+
 
 struct SearchListView_Previews: PreviewProvider {
     static var previews: some View {

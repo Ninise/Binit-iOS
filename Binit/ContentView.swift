@@ -15,7 +15,8 @@ struct ContentView: View {
                 .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
                 .ignoresSafeArea()
 
-            SplashScreenView()
+//            SplashScreenView()
+            SearchListView(searchWord: "")
         }
 
         
