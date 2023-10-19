@@ -11,12 +11,12 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
-            Color.white
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-                .ignoresSafeArea()
+//            Color.white
+//                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+//                .ignoresSafeArea()
 
-//            SplashScreenView()
-            SearchListView(searchWord: "")
+            SplashScreenView()
+            
         }
 
         

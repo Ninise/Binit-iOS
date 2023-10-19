@@ -19,7 +19,6 @@ struct SearchListView: View {
     var body: some View {
         VStack {
 
-            
             if (search.isEmpty) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
@@ -32,9 +31,11 @@ struct SearchListView: View {
                         }
                     }
                 }
+                
             }
             
             List {
+                
                 
                 if (!search.isEmpty && viewModel.items.isEmpty && !viewModel.isLoading) {
                     VStack (alignment: .center) {
@@ -107,12 +108,12 @@ struct SearchListView: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle("Search products")
             
 
                     
         }
-        .searchable(text: $search)
+        .navigationTitle(Text("Search products"))
+        .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: search, perform: { newValue in
             viewModel.search(query: newValue)
         })

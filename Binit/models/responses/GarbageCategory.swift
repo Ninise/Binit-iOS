@@ -40,4 +40,9 @@ struct SubCategoryItem: Codable, Identifiable {
     
     let title: String
     let data: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case data
+    }
 }

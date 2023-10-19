@@ -17,4 +17,10 @@ struct AnswerObject: Codable, Identifiable {
     let answer: String
     let explanation: String
     let isCorrect: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case answer
+        case explanation
+        case isCorrect
+    }
 }

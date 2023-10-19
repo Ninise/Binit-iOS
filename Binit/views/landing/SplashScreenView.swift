@@ -16,11 +16,10 @@ struct SplashScreenView: View {
     let whalescaleImage = "ic_landing_whalescale"
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 
                 VStack {
-                    NavigationViews
                     Spacer()
                     Image(binitImage)
                         .resizable()
@@ -33,24 +32,25 @@ struct SplashScreenView: View {
                         .frame(width: 100)
                 }
             }
+            .navigationDestination(isPresented: $goToLanding) {
+                LandingView()
+            }
+            .navigationDestination(isPresented: $goToMain) {
+                MainView()
+            }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     goToLanding = true
+                    Utils.log("go to landing")
                 })
             }
         }
+       
         .accentColor(.orangeColor)
         .preferredColorScheme(.light)
     
     }
     
-    private var NavigationViews: some View {
-        ZStack {
-            NavigationLink(destination: LandingView(), isActive: $goToLanding, label: {})
-            
-            NavigationLink(destination: MainView(), isActive: $goToMain, label: {})
-        }
-    }
 }
 
 struct SplashScreenView_Previews: PreviewProvider {
