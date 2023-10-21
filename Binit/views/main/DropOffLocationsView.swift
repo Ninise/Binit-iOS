@@ -13,6 +13,8 @@ struct DropOffLocationsView: View {
     
     @State private var message: String = ""
     
+    @State private var showDialog: Bool = false
+    
     let image = "ic_drop_off_locations_image"
     
     var body: some View {
@@ -30,20 +32,28 @@ struct DropOffLocationsView: View {
                     .frame(width: .infinity, height: 160)
                     .padding(.top, 10)
                     .padding(.trailing, 20)
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                 
                 VStack (alignment: .leading) {
                     Text(LocalizedStringKey("Drop_off_locations_subtitle"))
                         .font(.custom(FontUtils.FONT_MEDIUM, size: 16))
                         .foregroundColor(.mainColor)
                         .padding(.top, PaddingConsts.pDefaultPadding20)
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                         
                     Text(LocalizedStringKey("Drop_off_locations_content"))
                         .multilineTextAlignment(.leading)
                         .font(.custom(FontUtils.FONT_REGULAR, size: 14))
                         .foregroundColor(.mainColor)
                         .padding(.top, -6)
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                         
-                    
                 }
                 
                 AppDefaultTextFieldView(
@@ -66,7 +76,12 @@ struct DropOffLocationsView: View {
                             )
                             
                             message = ""
-                        }
+                            
+                            hideKeyboard()
+                            
+                            withAnimation(.easeIn(duration: 1)) {
+                                showDialog = true
+                            }                        }
                 })
                 .padding(.top, 5)
                 .padding(.horizontal, 5)
@@ -82,6 +97,30 @@ struct DropOffLocationsView: View {
             .padding(.horizontal, PaddingConsts.pDefaultPadding20)
             .padding(.top, 10)
 
+            if (showDialog) {
+                ZStack {
+                    
+                    Color
+                        .mainColor
+                        .opacity(0.2)
+                        .ignoresSafeArea()
+                    
+                    SharingSuccessDialogView()
+                }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+                        withAnimation {
+                            showDialog = false
+                        }
+                    })
+                }
+                .onTapGesture {
+                    withAnimation {
+                        showDialog = false
+                    }
+                }
+            }
+            
         }
     }
 }

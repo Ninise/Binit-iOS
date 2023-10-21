@@ -64,8 +64,9 @@ struct DragableObject: ViewModifier {
                         successfulDrop = self.onDropped != nil ? self.onDropped!(gesture.location) : self.onDropObject!(dragableObject!, gesture.location)
                         withAnimation(.linear(duration: DrawingConstants.dragStateOnEndedTransitionDuration)) {
                             self.dragState = .none
+                            self.dragOffset = .zero
                         }
-                        self.dragOffset = .zero
+                        
                     }
             )
     }
@@ -73,7 +74,7 @@ struct DragableObject: ViewModifier {
     private struct DrawingConstants {
         static let shadowRadius: CGFloat = 10
         static let dragStateOnChangedTransitionDuration: Double = 0.25
-        static let dragStateOnEndedTransitionDuration: Double = 2
+        static let dragStateOnEndedTransitionDuration: Double = 0.25
         
         static let dragColorNone = Color.clear
         static let dragColorUnknown = Color.blue

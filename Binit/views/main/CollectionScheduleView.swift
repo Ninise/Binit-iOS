@@ -13,6 +13,8 @@ struct CollectionScheduleView: View {
     
     @State private var message: String = ""
     
+    @State private var showDialog: Bool = false
+    
     let image = "ic_collection_schedule_image"
     
     var body: some View {
@@ -30,18 +32,27 @@ struct CollectionScheduleView: View {
                     .frame(width: .infinity, height: 160)
                     .padding(.top, 10)
                     .padding(.trailing, 40)
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                 
                 VStack (alignment: .leading) {
                     Text(LocalizedStringKey("Collection_schedule_subtitle"))
                         .font(.custom(FontUtils.FONT_MEDIUM, size: 16))
                         .foregroundColor(.mainColor)
                         .padding(.top, PaddingConsts.pDefaultPadding20)
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                         
                     Text(LocalizedStringKey("Collection_schedule_content"))
                         .multilineTextAlignment(.leading)
                         .font(.custom(FontUtils.FONT_REGULAR, size: 14))
                         .foregroundColor(.mainColor)
                         .padding(.top, -6)
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
                         
                     
                 }
@@ -65,6 +76,12 @@ struct CollectionScheduleView: View {
                             )
                             
                             message = ""
+                            
+                            hideKeyboard()
+                            
+                            withAnimation(.easeIn(duration: 1)) {
+                                showDialog = true
+                            }
                         }
                 })
                 .padding(.top, 5)
@@ -80,6 +97,27 @@ struct CollectionScheduleView: View {
             .padding(.horizontal, PaddingConsts.pDefaultPadding20)
             .padding(.top, 10)
 
+            
+            if (showDialog) {
+                ZStack {
+                    
+                    Color
+                        .mainColor
+                        .opacity(0.2)
+                        .ignoresSafeArea()
+                    
+                    SharingSuccessDialogView()
+                }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+                        showDialog = false
+                    })
+                }
+                .onTapGesture {
+                    showDialog = false
+                }
+            }
+            
         }
     }
 }

@@ -106,3 +106,6 @@ P.S. Please, don't be super judgmental, we are only two on the team and it's our
 
 "Game_drag_drop_rules_1" = "In this game, your task is to sort different types of garbage into the correct bins. Get ready to test your waste management skills and contribute to a cleaner environment!";
 "Game_drag_drop_rules_2" = "Drag each item and drop it into the appropriate bin:\nCompost, Recycling, or Waste.\nPay attention to the item's characteristics, such as material, food waste, or non-recyclable materials, to make the correct sorting decision.";
+
+"Thank_you_for_sharing" = "Thank you for sharing!";
+"We_got_your_message" = "We got your message.";

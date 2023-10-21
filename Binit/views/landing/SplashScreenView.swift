@@ -40,8 +40,12 @@ struct SplashScreenView: View {
             }
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    goToLanding = true
-                    Utils.log("go to landing")
+                    if (AppSettings.shared.isShownInitialDialog()) {
+                        goToMain = true
+                    } else {
+                        goToLanding = true
+                        AppSettings.shared.setInitialDialogShown(flag: true)
+                    }
                 })
             }
         }

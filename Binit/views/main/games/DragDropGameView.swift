@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// make objects animated or place them in different locations
+
 struct DragDropGameView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -21,16 +23,27 @@ struct DragDropGameView: View {
     @State private var showRulesScreen: Bool = false
     @State private var starsCount: Int = 0
     
-    @State private var isGameItemFalling: Bool = false
     @State private var currentItem: GameObject? = GameUtils.shared.getBatchOfItems()[0]
     @State private var workGameSet: [GameObject] = []
-    @State private var itemLocationY: CGFloat = -200
+    
     
     @State private var organicBinStatus: Int = 0
     @State private var recycleBinStatus: Int = 0
     @State private var garbageBinStatus: Int = 0
     
     @State private var isRulesItemFalling: Bool = false
+    
+    @State private var isGameItemChange: Bool = false
+    
+    @State private var isWrongOrganicState: Bool = false
+    @State private var isWrongGarbageState: Bool = false
+    @State private var isWrongRecycleState: Bool = false
+
+    
+    let STATE_GAME_ITEM_DEFAULT = 0
+    let STATE_GAME_ITEM_HOVER = 1
+    let STATE_GAME_ITEM_WRONG = 2
+    let STATE_GAME_ITEM_CORRECT = 3
     
     let backButtonIcon = "ic_back_circle_arrow"
     let boyImage = "ic_game_boy"
@@ -55,14 +68,14 @@ struct DragDropGameView: View {
     
     let rulesGameIcon = "ic_game_item_package_rec"
     
-    let binWidth = 85.0
-    let binHeight = 125.0
+    let binWidth = 95.0
+    let binHeight = 135.0
     
-    let elementSize = 50.0
+    let elementSize = 60.0
     
     var body: some View {
         ZStack {
-         
+     
             Image(backImage)
                 .resizable()
                 .scaledToFill()
@@ -84,10 +97,9 @@ struct DragDropGameView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: elementSize, height: elementSize)
+                        .scaleEffect(isGameItemChange ? 3 : 1)
                         .dragable(onDragged: onDragged(position:), onDropped: onDropped(position:))
                         .zIndex(1)
-//                        .offset(y: isGameItemFalling ? 400 : itemLocationY)
-                      
                         
                 }
             }
@@ -113,6 +125,10 @@ struct DragDropGameView: View {
         .onAppear {
             workGameSet = gameSet
             randomElement()
+            
+            showRulesScreen = !AppSettings.shared.isUserSawDndRules()
+            
+            AppSettings.shared.setUserSawDndRules(flag: true)
         }
     }
     
@@ -173,6 +189,7 @@ struct DragDropGameView: View {
         }
     }
     
+    
     private var GameLayView: some View {
         VStack {
 
@@ -183,6 +200,7 @@ struct DragDropGameView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: binWidth, height: binHeight)
+                    .shake($isWrongOrganicState)
                     .dropReceiver(for: organicDADVM.dropReceiver, model: organicDADVM)
 
                 
@@ -190,12 +208,14 @@ struct DragDropGameView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: binWidth, height: binHeight)
+                    .shake($isWrongRecycleState)
                     .dropReceiver(for: recycleDADVM.dropReceiver, model: recycleDADVM)
                 
                 Image(getGarbageStatusIcon())
                     .resizable()
                     .scaledToFit()
                     .frame(width: binWidth, height: binHeight)
+                    .shake($isWrongGarbageState)
                     .dropReceiver(for: garbageDADVM.dropReceiver, model: garbageDADVM)
 
             }
@@ -338,47 +358,45 @@ extension DragDropGameView {
     
     private func onDragged(position: CGPoint) -> DragState {
         
-//        itemLocationY = position.y
-//        isGameItemFalling = false
-        
         if organicDADVM.dropReceiver.getDropArea()!.contains(position) {
-            organicBinStatus = 1
+            organicBinStatus = STATE_GAME_ITEM_HOVER
             
             return .unknown
         }
         
         if garbageDADVM.dropReceiver.getDropArea()!.contains(position) {
-            garbageBinStatus = 1
+            garbageBinStatus = STATE_GAME_ITEM_HOVER
             return .unknown
         }
         
         if recycleDADVM.dropReceiver.getDropArea()!.contains(position) {
-            recycleBinStatus = 1
+            recycleBinStatus = STATE_GAME_ITEM_HOVER
             return .unknown
         }
         
-        organicBinStatus = 0
-        garbageBinStatus = 0
-        recycleBinStatus = 0
+        organicBinStatus = STATE_GAME_ITEM_DEFAULT
+        garbageBinStatus = STATE_GAME_ITEM_DEFAULT
+        recycleBinStatus = STATE_GAME_ITEM_DEFAULT
         
         return .unknown
 
      }
      
     private func onDropped(position: CGPoint) -> Bool {
-        
+    
         if let item = currentItem {
 
-            resetIconsState()
-            
             if organicDADVM.dropReceiver.getDropArea()!.contains(position) {
+
+                resetIconsState()
                 
                 if (item.type == GarbageUtils.ORGANIC_TYPE) {
-                    organicBinStatus = 3
+                    organicBinStatus = STATE_GAME_ITEM_CORRECT
                     starsCount += 1
                     return true
                 } else {
-                    organicBinStatus = 2
+                    organicBinStatus = STATE_GAME_ITEM_WRONG
+                    isWrongOrganicState = true
                     return false
                 }
                 
@@ -386,12 +404,15 @@ extension DragDropGameView {
             
             if garbageDADVM.dropReceiver.getDropArea()!.contains(position) {
                 
+                resetIconsState()
+                
                 if (item.type == GarbageUtils.GARBAGE_TYPE) {
-                    garbageBinStatus = 3
+                    garbageBinStatus = STATE_GAME_ITEM_CORRECT
                     starsCount += 1
                     return true
                 } else {
-                    garbageBinStatus = 2
+                    garbageBinStatus = STATE_GAME_ITEM_WRONG
+                    isWrongGarbageState = true
                     return false
                 }
                 
@@ -399,12 +420,15 @@ extension DragDropGameView {
             
             if recycleDADVM.dropReceiver.getDropArea()!.contains(position) {
                 
+                resetIconsState()
+                
                 if (item.type == GarbageUtils.RECYCLE_TYPE) {
-                    recycleBinStatus = 3
+                    recycleBinStatus = STATE_GAME_ITEM_CORRECT
                     starsCount += 1
                     return true
                 } else {
-                    recycleBinStatus = 2
+                    recycleBinStatus = STATE_GAME_ITEM_WRONG
+                    isWrongRecycleState = true
                     return false
                 }
                 
@@ -432,19 +456,19 @@ extension DragDropGameView {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            organicBinStatus = 0
-            recycleBinStatus = 0
-            garbageBinStatus = 0
+            organicBinStatus = STATE_GAME_ITEM_DEFAULT
+            recycleBinStatus = STATE_GAME_ITEM_DEFAULT
+            garbageBinStatus = STATE_GAME_ITEM_DEFAULT
         })
         
     }
     
     private func getOrganicStatusIcon() -> String {
         switch organicBinStatus {
-        case 0: return organicBinImage
-        case 1: return organicBinImageHover
-        case 2: return organicBinImageMistake
-        case 3: return organicBinImageCorrect
+        case STATE_GAME_ITEM_DEFAULT: return organicBinImage
+        case STATE_GAME_ITEM_HOVER: return organicBinImageHover
+        case STATE_GAME_ITEM_WRONG: return organicBinImageMistake
+        case STATE_GAME_ITEM_CORRECT: return organicBinImageCorrect
         default:
             return organicBinImage
             
@@ -453,10 +477,10 @@ extension DragDropGameView {
     
     private func getRecycleStatusIcon() -> String {
         switch recycleBinStatus {
-        case 0: return recycleBinImage
-        case 1: return recycleBinImageHover
-        case 2: return recycleBinImageMistake
-        case 3: return recycleBinImageCorrect
+        case STATE_GAME_ITEM_DEFAULT: return recycleBinImage
+        case STATE_GAME_ITEM_HOVER: return recycleBinImageHover
+        case STATE_GAME_ITEM_WRONG: return recycleBinImageMistake
+        case STATE_GAME_ITEM_CORRECT: return recycleBinImageCorrect
         default:
             return recycleBinImage
             
@@ -465,10 +489,10 @@ extension DragDropGameView {
     
     private func getGarbageStatusIcon() -> String {
         switch garbageBinStatus {
-        case 0: return garbageBinImage
-        case 1: return garbageBinImageHover
-        case 2: return garbageBinImageMistake
-        case 3: return garbageBinImageCorrect
+        case STATE_GAME_ITEM_DEFAULT: return garbageBinImage
+        case STATE_GAME_ITEM_HOVER: return garbageBinImageHover
+        case STATE_GAME_ITEM_WRONG: return garbageBinImageMistake
+        case STATE_GAME_ITEM_CORRECT: return garbageBinImageCorrect
         default:
             return garbageBinImage
             
@@ -478,12 +502,21 @@ extension DragDropGameView {
     private func randomElement() {
         
         if let elem = workGameSet.randomElement() {
+          
             Utils.log(elem.image)
             currentItem = elem
-//            withAnimation(.easeIn(duration: 5)) {
-//                isGameItemFalling = true
-//                itemLocationY = -200
-//            }
+            
+            withAnimation(.easeIn(duration: 1)) {
+                isGameItemChange = true
+                
+                isWrongOrganicState = false
+                isWrongRecycleState = false
+                isWrongGarbageState = false
+            }
+            
+            withAnimation(.easeOut(duration: 1)) {
+                isGameItemChange = false
+            }
         }
     }
     

@@ -36,7 +36,11 @@ struct SettingsView: View {
                 SettingsButtonItemView(title: LocalizedStringKey("About_us"))
             })
             
-            SettingsButtonItemView(title: LocalizedStringKey("Rate_the_app"))
+            Button(action: {
+                AppStoreReviewUtils.requestReviewIfAppropriate()
+            }, label: {
+                SettingsButtonItemView(title: LocalizedStringKey("Rate_the_app"))
+            })
             
             NavigationLink(destination: ReportProblemView(), label: {
                 SettingsButtonItemView(title: LocalizedStringKey("Report_a_problem"))

@@ -58,6 +58,11 @@
 		11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE11282AD414C5008812F8 /* QuizGameView.swift */; };
 		11DE112B2AD438A9008812F8 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE112A2AD438A9008812F8 /* GameUtils.swift */; };
 		11EACF082ADC8A1B00A51736 /* UIScreen+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */; };
+		11EAD76B2AE47905001AC2BC /* Shake+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAD76A2AE47905001AC2BC /* Shake+extensions.swift */; };
+		11EAD76D2AE4803D001AC2BC /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAD76C2AE4803D001AC2BC /* AppSettings.swift */; };
+		11EAD76F2AE48281001AC2BC /* SharingSuccessDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAD76E2AE48281001AC2BC /* SharingSuccessDialogView.swift */; };
+		11EAD7732AE485F6001AC2BC /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAD7722AE485F6001AC2BC /* View+extension.swift */; };
+		11EAD7772AE48B73001AC2BC /* AppStoreReviewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EAD7762AE48B73001AC2BC /* AppStoreReviewUtils.swift */; };
 		11F6202A2AC25A03005FB2EC /* BinitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F620292AC25A03005FB2EC /* BinitApp.swift */; };
 		11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6202B2AC25A03005FB2EC /* ContentView.swift */; };
 		11F6202E2AC25A06005FB2EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11F6202D2AC25A06005FB2EC /* Assets.xcassets */; };
@@ -145,6 +150,11 @@
 		11DE11282AD414C5008812F8 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
 		11DE112A2AD438A9008812F8 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+extensions.swift"; sourceTree = "<group>"; };
+		11EAD76A2AE47905001AC2BC /* Shake+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shake+extensions.swift"; sourceTree = "<group>"; };
+		11EAD76C2AE4803D001AC2BC /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		11EAD76E2AE48281001AC2BC /* SharingSuccessDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingSuccessDialogView.swift; sourceTree = "<group>"; };
+		11EAD7722AE485F6001AC2BC /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		11EAD7762AE48B73001AC2BC /* AppStoreReviewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewUtils.swift; sourceTree = "<group>"; };
 		11F620262AC25A03005FB2EC /* Binit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F620292AC25A03005FB2EC /* BinitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitApp.swift; sourceTree = "<group>"; };
 		11F6202B2AC25A03005FB2EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -227,6 +237,8 @@
 				1152D0542AC260CC0067AE02 /* Color+extensions.swift */,
 				116C1C232AC9B37C0006879F /* Strings+extensions.swift */,
 				11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */,
+				11EAD76A2AE47905001AC2BC /* Shake+extensions.swift */,
+				11EAD7722AE485F6001AC2BC /* View+extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -234,12 +246,11 @@
 		1152D05C2AC264DA0067AE02 /* custom_views */ = {
 			isa = PBXGroup;
 			children = (
+				11EAD7712AE482A0001AC2BC /* textviews */,
+				11EAD7702AE48291001AC2BC /* buttons */,
 				110412A02ADBFFCF00E15B86 /* drag_and_drop */,
-				1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */,
-				116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */,
-				116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */,
-				11F923BD2AD2F7C6002B40FD /* AttributedTextView.swift */,
 				11F923D22AD368D7002B40FD /* AppIndicatorView.swift */,
+				11EAD76E2AE48281001AC2BC /* SharingSuccessDialogView.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -310,6 +321,24 @@
 				11F923C32AD304A9002B40FD /* SearchViewModel.swift */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		11EAD7702AE48291001AC2BC /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1152D05D2AC264F10067AE02 /* AppDefaultButton.swift */,
+				116C1C362ACB97F30006879F /* AppDefaultNotButton.swift */,
+			);
+			path = buttons;
+			sourceTree = "<group>";
+		};
+		11EAD7712AE482A0001AC2BC /* textviews */ = {
+			isa = PBXGroup;
+			children = (
+				116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */,
+				11F923BD2AD2F7C6002B40FD /* AttributedTextView.swift */,
+			);
+			path = textviews;
 			sourceTree = "<group>";
 		};
 		11F6201D2AC25A03005FB2EC = {
@@ -437,6 +466,8 @@
 				11F923C12AD301FA002B40FD /* SuggestionsConts.swift */,
 				11F923D02AD35E50002B40FD /* Utils.swift */,
 				11DE112A2AD438A9008812F8 /* GameUtils.swift */,
+				11EAD76C2AE4803D001AC2BC /* AppSettings.swift */,
+				11EAD7762AE48B73001AC2BC /* AppStoreReviewUtils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -625,10 +656,14 @@
 				11B87CDB2AD0E3580057783B /* QuizObject.swift in Sources */,
 				116C1C2A2ACA0B010006879F /* ContactUsView.swift in Sources */,
 				1152D05E2AC264F10067AE02 /* AppDefaultButton.swift in Sources */,
+				11EAD76F2AE48281001AC2BC /* SharingSuccessDialogView.swift in Sources */,
 				1152D06E2AC7AAF40067AE02 /* DropOffLocationsView.swift in Sources */,
+				11EAD7772AE48B73001AC2BC /* AppStoreReviewUtils.swift in Sources */,
 				11B87CD52AD0E01E0057783B /* QuickSearch.swift in Sources */,
 				11F923D32AD368D7002B40FD /* AppIndicatorView.swift in Sources */,
+				11EAD7732AE485F6001AC2BC /* View+extension.swift in Sources */,
 				11B87CD72AD0E1010057783B /* GarbageCategory.swift in Sources */,
+				11EAD76D2AE4803D001AC2BC /* AppSettings.swift in Sources */,
 				11B87CD32AD0DF840057783B /* Product.swift in Sources */,
 				1152D0732AC8E4050067AE02 /* InviteFriendView.swift in Sources */,
 				116C1C262AC9B5A40006879F /* AppDefaultTextFieldView.swift in Sources */,
@@ -645,6 +680,7 @@
 				116C1C4D2ACE3D2C0006879F /* SuggestRequest.swift in Sources */,
 				116C1C562ACE41970006879F /* Article.swift in Sources */,
 				110412A62ADC003500E15B86 /* DropAreaOverlay.swift in Sources */,
+				11EAD76B2AE47905001AC2BC /* Shake+extensions.swift in Sources */,
 				11F923D12AD35E50002B40FD /* Utils.swift in Sources */,
 				110412AC2ADC00A100E15B86 /* Utility+onRotate.swift in Sources */,
 				1152D0552AC260CC0067AE02 /* Color+extensions.swift in Sources */,
