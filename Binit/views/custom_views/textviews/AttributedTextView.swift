@@ -47,7 +47,7 @@ struct AttributedTextView: View {
                 startIndex = nextRange.upperBound
             } else {
                 let remainingRange = startIndex..<input.endIndex
-                parsedText = parsedText + Text(input[remainingRange]).font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                parsedText = parsedText + Text(input[remainingRange]).font(.custom(FontUtils.FONT_REGULAR, size: 17))
                 break
             }
         }

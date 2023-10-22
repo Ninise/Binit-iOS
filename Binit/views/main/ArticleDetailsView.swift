@@ -31,6 +31,7 @@ struct ArticleDetailsView: View {
                         .font(.custom(FontUtils.FONT_REGULAR, size: 12))
                         .foregroundColor(.mainColor)
                         .italic()
+                        .underline()
                 }
                     
                 

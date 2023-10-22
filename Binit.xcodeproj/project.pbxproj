@@ -55,6 +55,7 @@
 		11B87CD92AD0E2230057783B /* RecycleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD82AD0E2230057783B /* RecycleType.swift */; };
 		11B87CDB2AD0E3580057783B /* QuizObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDA2AD0E3580057783B /* QuizObject.swift */; };
 		11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDD2AD16DC50057783B /* MainViewModel.swift */; };
+		11D1E5942AE5CA5B005C08C2 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 11D1E5932AE5CA5B005C08C2 /* Fonts */; };
 		11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE11282AD414C5008812F8 /* QuizGameView.swift */; };
 		11DE112B2AD438A9008812F8 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE112A2AD438A9008812F8 /* GameUtils.swift */; };
 		11EACF082ADC8A1B00A51736 /* UIScreen+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */; };
@@ -147,6 +148,7 @@
 		11B87CD82AD0E2230057783B /* RecycleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecycleType.swift; sourceTree = "<group>"; };
 		11B87CDA2AD0E3580057783B /* QuizObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizObject.swift; sourceTree = "<group>"; };
 		11B87CDD2AD16DC50057783B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		11D1E5932AE5CA5B005C08C2 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; sourceTree = "<group>"; };
 		11DE11282AD414C5008812F8 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
 		11DE112A2AD438A9008812F8 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+extensions.swift"; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				11F620632AC25EAA005FB2EC /* Inter-Medium.ttf */,
 				11F620602AC25EA9005FB2EC /* Inter-Regular.ttf */,
 				11F620612AC25EA9005FB2EC /* Inter-SemiBold.ttf */,
+				11D1E5932AE5CA5B005C08C2 /* Fonts */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D1E5942AE5CA5B005C08C2 /* Fonts in Resources */,
 				11F620312AC25A06005FB2EC /* Preview Assets.xcassets in Resources */,
 				11F923D52AD369F5002B40FD /* GoogleService-Info.plist in Resources */,
 				1152D0592AC263F20067AE02 /* Localizable.strings in Resources */,

@@ -134,7 +134,7 @@ struct QuickSearchBubbleView: View {
         ZStack {
             Text(title)
                 .fixedSize(horizontal: true, vertical: false)
-                .font(.custom(FontUtils.FONT_REGULAR, size: 12))
+                .font(.custom(FontUtils.FONT_REGULAR, size: 14))
                 .foregroundColor(.searchBubbleTextColor)
         }
         .padding(.horizontal, 16)
@@ -159,7 +159,7 @@ struct MainGarbageCardView: View {
             .cornerRadius(10)
             
             Text(type.display_type)
-                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 12))
+                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
                 .foregroundColor(.mainColor)
         }
     }
@@ -184,7 +184,7 @@ struct MainArticleItemView: View {
                     .foregroundColor(.mainColor)
                 
                 Text(article.short_description)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 12))
+                    .font(.custom(FontUtils.FONT_REGULAR, size: 14))
                     .foregroundColor(.mainArticleSubTitleColor)
             }
             .padding(.leading, 5)

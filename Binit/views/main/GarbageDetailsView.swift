@@ -79,11 +79,13 @@ struct DetailsSubviewItemView: View {
         VStack {
            
             Button(action: {
-                open.toggle()
+                withAnimation {
+                    open.toggle()
+                }
             }, label: {
                 HStack  {
                     Text(sub.title)
-                        .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                        .font(.custom(FontUtils.FONT_MEDIUM, size: 17))
                         .foregroundColor(.orangeColor)
                     
                     Spacer()
@@ -91,7 +93,7 @@ struct DetailsSubviewItemView: View {
                     Image(open ? arrowDownIcon : arrowUpIcon)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 12, height: 12)
+                        .frame(width: 14, height: 14)
                 }
                 .padding(.vertical)
             })
@@ -100,7 +102,7 @@ struct DetailsSubviewItemView: View {
                 ForEach(sub.data, id: \.self) { text in
                     HStack (alignment: .top) {
                         Text("• ")
-                            .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                            .font(.custom(FontUtils.FONT_REGULAR, size: 17))
                             .foregroundColor(.mainColor)
                         
                         AttributedTextView(text)
@@ -109,6 +111,7 @@ struct DetailsSubviewItemView: View {
                         
                         Spacer()
                     }
+                    .padding(.top, 1)
                     
                 }
                 

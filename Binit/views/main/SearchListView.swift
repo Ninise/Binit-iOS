@@ -120,6 +120,9 @@ struct SearchListView: View {
         .onAppear {
             search = searchWord
             viewModel.getQuickSearchSuggestions()
+            
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor(Color.searchBodyColor)
+//            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
         }
     }
    
