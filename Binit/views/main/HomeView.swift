@@ -52,7 +52,7 @@ struct HomeView: View {
                             }
                         }
                     }
-                    .padding(.top, 10)
+                    .padding(.top, 7)
                     
                     MainTextTitleView(title: LocalizedStringKey("How_to_sort"))
                     

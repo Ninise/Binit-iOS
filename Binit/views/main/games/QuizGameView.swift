@@ -29,11 +29,14 @@ struct QuizGameView: View {
     let backImage = "ic_quiz_game_back"
     
     var body: some View {
-        ZStack {
+        ZStack (alignment: .top) {
           
+            TopBarView
             
             VStack {
-                TopBarView
+                
+                
+                Spacer()
                 
                 if showResultsDialog {
                     ResultsDialogView(count: starsCount, callback: {
@@ -234,6 +237,7 @@ struct ExplainDialogView: View {
                 .foregroundColor(item.isCorrect ? .correctColor : .wrongColor)
             
             Text(item.explanation)
+                .multilineTextAlignment(.center)
                 .font(.custom(FontUtils.FONT_REGULAR, size: 16))
                 .foregroundColor(.mainColor)
                 .padding(.vertical, 5)
@@ -254,7 +258,6 @@ struct ExplainDialogView: View {
         .background(.white)
         .cornerRadius(10)
         .padding()
-        .padding(.top, 150)
     }
 }
 
@@ -310,6 +313,5 @@ struct ResultsDialogView: View {
         .background(.white)
         .cornerRadius(10)
         .padding()
-        .padding(.top, 150)
     }
 }
