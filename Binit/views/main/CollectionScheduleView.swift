@@ -23,7 +23,7 @@ struct CollectionScheduleView: View {
                 
                 
                 Text(LocalizedStringKey("Collection_schedule"))
-                    .font(.custom(FontUtils.FONT_BOLD, size: 18))
+                    .font(.custom(FontUtils.FONT_BOLD, size: 21))
                     .foregroundColor(.mainColor)
                 
                 Image(image)
@@ -62,6 +62,7 @@ struct CollectionScheduleView: View {
                     hint: LocalizedStringKey("Message").stringValue(),
                     lineLimit: 4
                 )
+                .padding(.horizontal, -2)
                 
                 AppDefaultButton(
                     title: LocalizedStringKey("Send"),
@@ -85,7 +86,7 @@ struct CollectionScheduleView: View {
                         }
                 })
                 .padding(.top, 5)
-                .padding(.horizontal, 5)
+                .padding(.horizontal, 3)
                 
                 
                 

@@ -30,8 +30,9 @@ struct ArticleDetailsView: View {
                     Text("@\(author)")
                         .font(.custom(FontUtils.FONT_REGULAR, size: 12))
                         .foregroundColor(.mainColor)
-                        .italic()
                         .underline()
+                        .italic()
+                        
                 }
                     
                 

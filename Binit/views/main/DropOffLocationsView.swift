@@ -23,7 +23,7 @@ struct DropOffLocationsView: View {
                 
                 
                 Text(LocalizedStringKey("Drop_off_locations"))
-                    .font(.custom(FontUtils.FONT_BOLD, size: 18))
+                    .font(.custom(FontUtils.FONT_BOLD, size: 21))
                     .foregroundColor(.mainColor)
                 
                 Image(image)
@@ -61,7 +61,7 @@ struct DropOffLocationsView: View {
                     hint: LocalizedStringKey("Message").stringValue(),
                     lineLimit: 5
                 )
-                
+                .padding(.horizontal, -2)
                 
                 AppDefaultButton(
                     title: LocalizedStringKey("Send"),
@@ -84,9 +84,7 @@ struct DropOffLocationsView: View {
                             }                        }
                 })
                 .padding(.top, 5)
-                .padding(.horizontal, 5)
-                
-                
+                .padding(.horizontal, 3)
                 
                 
                 Spacer()

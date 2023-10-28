@@ -29,6 +29,7 @@ struct GarbageDetailsView: View {
                 Text("@\(item.image_author)")
                     .font(.custom(FontUtils.FONT_REGULAR, size: 12))
                     .foregroundColor(.mainColor)
+                    .underline()
                     .italic()
                     .onTapGesture {
                         viewModel.openUrl(urlStr: item.image_author_url)
