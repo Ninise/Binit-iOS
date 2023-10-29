@@ -119,7 +119,7 @@ struct MainTextTitleView: View {
     
     var body: some View {
         Text(title)
-            .font(.custom(FontUtils.FONT_BOLD, size: 18))
+            .font(.custom(FontUtils.FONT_BOLD, size: 20))
             .foregroundColor(.mainColor)
             .padding(.top, PaddingConsts.pDefaultPadding20)
             .padding(.leading, PaddingConsts.pDefaultPadding20)
@@ -134,7 +134,7 @@ struct QuickSearchBubbleView: View {
         ZStack {
             Text(title)
                 .fixedSize(horizontal: true, vertical: false)
-                .font(.custom(FontUtils.FONT_REGULAR, size: 14))
+                .font(.custom(FontUtils.FONT_REGULAR, size: 15))
                 .foregroundColor(.searchBubbleTextColor)
         }
         .padding(.horizontal, 16)
@@ -159,7 +159,7 @@ struct MainGarbageCardView: View {
             .cornerRadius(10)
             
             Text(type.display_type)
-                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
+                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
                 .foregroundColor(.mainColor)
         }
     }
@@ -180,11 +180,11 @@ struct MainArticleItemView: View {
             
             VStack (alignment: .leading, spacing: 5) {
                 Text(article.title)
-                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 14))
+                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
                     .foregroundColor(.mainColor)
                 
                 Text(article.short_description)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 14))
+                    .font(.custom(FontUtils.FONT_REGULAR, size: 15))
                     .foregroundColor(.mainArticleSubTitleColor)
             }
             .padding(.leading, 5)

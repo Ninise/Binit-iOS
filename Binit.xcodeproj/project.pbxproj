@@ -148,7 +148,7 @@
 		11B87CD82AD0E2230057783B /* RecycleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecycleType.swift; sourceTree = "<group>"; };
 		11B87CDA2AD0E3580057783B /* QuizObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizObject.swift; sourceTree = "<group>"; };
 		11B87CDD2AD16DC50057783B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		11D1E5932AE5CA5B005C08C2 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; sourceTree = "<group>"; };
+		11D1E5932AE5CA5B005C08C2 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		11DE11282AD414C5008812F8 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
 		11DE112A2AD438A9008812F8 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+extensions.swift"; sourceTree = "<group>"; };

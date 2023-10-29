@@ -71,32 +71,38 @@ struct SearchListView: View {
                 if (search.isEmpty) {
                     QuickSearchItem(type: GarbageUtils.GARBAGE_TYPE, title: LocalizedStringKey("Garbage").stringValue(), callback: { type in
                         search = GarbageUtils.GARBAGE_TYPE
+                        hideKeyboard()
                     })
+                    .padding(.top, 10)
                     
                     QuickSearchItem(type: GarbageUtils.RECYCLE_TYPE, title: LocalizedStringKey("Recycle").stringValue(), callback: { type in
                         search = GarbageUtils.RECYCLE_TYPE
+                        hideKeyboard()
                     })
                     
                     QuickSearchItem(type: GarbageUtils.ORGANIC_TYPE, title: LocalizedStringKey("Organic").stringValue(), callback: { type in
                         search = GarbageUtils.ORGANIC_TYPE
+                        hideKeyboard()
                     })
                     
                     QuickSearchItem(type: GarbageUtils.ELECTRONIC_WASTE_TYPE, title: LocalizedStringKey("E_waste").stringValue(), callback: { type in
                         search = GarbageUtils.ELECTRONIC_WASTE_TYPE
+                        hideKeyboard()
                     })
                     
                     QuickSearchItem(type: GarbageUtils.HHW_TYPE, title: LocalizedStringKey("Household_hazardous").stringValue(), callback: { type in
                         search = GarbageUtils.HHW_TYPE
+                        hideKeyboard()
                     })
                 } else {
                     ForEach(viewModel.items) { item in
                         SearchItemView(item: item)
-                            .padding(.vertical, 5)
+                            .padding(.top, 1)
                     }
                 }
                 
                 if (!viewModel.items.isEmpty) {
-                    Text("End of search...")
+                    Text(" ")
                         .font(.custom(FontUtils.FONT_REGULAR, size: 16))
                         .foregroundColor(.mainColor)
                         .onAppear {
@@ -114,6 +120,7 @@ struct SearchListView: View {
         }
         .navigationTitle(Text("Search products"))
         .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always))
+        .autocapitalization(.none)
         .onChange(of: search, perform: { newValue in
             viewModel.search(query: newValue)
         })
@@ -143,50 +150,62 @@ struct SearchItemView: View {
     
     
     var body: some View {
-        HStack (alignment: .center) {
-            if item.image.isEmpty {
-                ZStack {
-                    Image(GarbageUtils.getBinByType(type: item.type))
+        VStack {
+            HStack (alignment: .center) {
+                if item.image.isEmpty {
+                    ZStack {
+                        Image(GarbageUtils.getBinByType(type: item.type))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .cornerRadius(10)
+                    }
+                    .frame(width: 80, height: 80)
+                } else {
+                    WebImage(url: URL(string: item.image))
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
+                        .scaledToFill()
+                        .frame(width: 80, height: 80)
                         .cornerRadius(10)
                 }
-                .frame(width: 80, height: 80)
-            } else {
-                WebImage(url: URL(string: item.image))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 80, height: 80)
-                    .cornerRadius(10)
-            }
-            
-            VStack (alignment: .leading) {
-                Text(item.name.capitalized)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 14))
-                    .foregroundColor(.mainColor)
                 
-                Text(item.description)
-                    .lineLimit(expanded ? 20 : 2)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 12))
-                    .foregroundColor(.mainArticleSubTitleColor)
-                    .truncationMode(.tail)
+                VStack (alignment: .leading) {
+                    Spacer()
+                    
+                    Text(item.name.capitalized)
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                        .foregroundColor(.mainColor)
+                    
+                    Text(String(item.description.trimmingCharacters(in: .whitespaces)))
+                        .lineLimit(expanded ? 20 : 2)
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 14))
+                        .foregroundColor(.mainArticleSubTitleColor)
+                        .truncationMode(.tail)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 5)
+                .onTapGesture {
+                    expanded.toggle()
+                }
                 
                 Spacer()
+                
+                Image(GarbageUtils.getIconByTypee(type: item.type))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                
             }
-            .padding(.leading, 5)
-            .onTapGesture {
-                expanded.toggle()
-            }
+            .padding(.trailing, 10)
+            .padding(.bottom, 2)
             
-            Spacer()
-            
-            Image(GarbageUtils.getIconByTypee(type: item.type))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20)
+            Divider()
+                .background(Color.searchBubbleTextColor.opacity(0.2))
+                .opacity(0.7)
             
         }
+        .listRowSeparator(.hidden)
     }
 }
 
@@ -199,29 +218,38 @@ struct QuickSearchItem: View {
     let quickIcon = "ic_search_quick"
     
     var body: some View {
-        Button(action: {
-            callback(type)
-        }, label: {
-            HStack (alignment: .center) {
-                Image(GarbageUtils.getIconByTypee(type: type))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                
-                Text(title)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 14))
-                    .foregroundColor(.mainColor)
-                
-                Spacer()
-                
-                Image(quickIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                
-            }
-        })
-        .padding(.vertical, 10)
+        VStack {
+            Button(action: {
+                callback(type)
+            }, label: {
+                HStack (alignment: .center) {
+                    Image(GarbageUtils.getIconByTypee(type: type))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                    
+                    Text(title)
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                        .foregroundColor(.searchBubbleTextColor.opacity(0.85))
+                    
+                    Spacer()
+                    
+                    Image(quickIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18, height: 18)
+                    
+                }
+            })
+            .padding(.trailing, 10)
+            .padding(.bottom, 10)
+            
+            Divider()
+                .background(Color.searchBubbleTextColor.opacity(0.8))
+        }
+        .padding(.top, 1)
+        .listRowSeparator(.hidden)
+
     }
     
 }
