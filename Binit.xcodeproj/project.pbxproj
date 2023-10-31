@@ -49,13 +49,13 @@
 		116C1C532ACE40D30006879F /* BinitGenerics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C522ACE40D30006879F /* BinitGenerics.swift */; };
 		116C1C562ACE41970006879F /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C552ACE41970006879F /* Article.swift */; };
 		119270CB2AD774B50021E109 /* DragDropGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119270CA2AD774B50021E109 /* DragDropGameView.swift */; };
+		119C667E2AF0810900DB2B92 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 119C667D2AF0810900DB2B92 /* Fonts */; };
 		11B87CD32AD0DF840057783B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD22AD0DF840057783B /* Product.swift */; };
 		11B87CD52AD0E01E0057783B /* QuickSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD42AD0E01E0057783B /* QuickSearch.swift */; };
 		11B87CD72AD0E1010057783B /* GarbageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD62AD0E1010057783B /* GarbageCategory.swift */; };
 		11B87CD92AD0E2230057783B /* RecycleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CD82AD0E2230057783B /* RecycleType.swift */; };
 		11B87CDB2AD0E3580057783B /* QuizObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDA2AD0E3580057783B /* QuizObject.swift */; };
 		11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B87CDD2AD16DC50057783B /* MainViewModel.swift */; };
-		11D1E5942AE5CA5B005C08C2 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 11D1E5932AE5CA5B005C08C2 /* Fonts */; };
 		11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE11282AD414C5008812F8 /* QuizGameView.swift */; };
 		11DE112B2AD438A9008812F8 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE112A2AD438A9008812F8 /* GameUtils.swift */; };
 		11EACF082ADC8A1B00A51736 /* UIScreen+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */; };
@@ -142,13 +142,13 @@
 		116C1C522ACE40D30006879F /* BinitGenerics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinitGenerics.swift; sourceTree = "<group>"; };
 		116C1C552ACE41970006879F /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		119270CA2AD774B50021E109 /* DragDropGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropGameView.swift; sourceTree = "<group>"; };
+		119C667D2AF0810900DB2B92 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; sourceTree = "<group>"; };
 		11B87CD22AD0DF840057783B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		11B87CD42AD0E01E0057783B /* QuickSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSearch.swift; sourceTree = "<group>"; };
 		11B87CD62AD0E1010057783B /* GarbageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarbageCategory.swift; sourceTree = "<group>"; };
 		11B87CD82AD0E2230057783B /* RecycleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecycleType.swift; sourceTree = "<group>"; };
 		11B87CDA2AD0E3580057783B /* QuizObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizObject.swift; sourceTree = "<group>"; };
 		11B87CDD2AD16DC50057783B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		11D1E5932AE5CA5B005C08C2 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		11DE11282AD414C5008812F8 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
 		11DE112A2AD438A9008812F8 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+extensions.swift"; sourceTree = "<group>"; };
@@ -498,7 +498,7 @@
 				11F620632AC25EAA005FB2EC /* Inter-Medium.ttf */,
 				11F620602AC25EA9005FB2EC /* Inter-Regular.ttf */,
 				11F620612AC25EA9005FB2EC /* Inter-SemiBold.ttf */,
-				11D1E5932AE5CA5B005C08C2 /* Fonts */,
+				119C667D2AF0810900DB2B92 /* Fonts */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11D1E5942AE5CA5B005C08C2 /* Fonts in Resources */,
+				119C667E2AF0810900DB2B92 /* Fonts in Resources */,
 				11F620312AC25A06005FB2EC /* Preview Assets.xcassets in Resources */,
 				11F923D52AD369F5002B40FD /* GoogleService-Info.plist in Resources */,
 				1152D0592AC263F20067AE02 /* Localizable.strings in Resources */,

@@ -42,7 +42,7 @@ class SearchViewModel: NSObject, ObservableObject {
         
         self.prevQuery = query
         
-        BinitRepository.shared.searchProducts(query, offset, limit, completion: { result in
+        BinitRepository.shared.searchProducts(String(query.trimmingCharacters(in: .whitespacesAndNewlines)), offset, limit, completion: { result in
             switch result {
             case .success(let response):
                 self.prevQuery = query

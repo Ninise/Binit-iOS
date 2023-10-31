@@ -1,14 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "ic_game_item_notebook_rec.png",
-      "idiom" : "universal"
-    },
-    {
       "filename" : "ic_game_item_notebook_rec.svg",
-      "idiom" : "universal",
-      "scale" : "1x",
-      "unassigned" : true
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -1,14 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "ic_game_item_cup_garb.png",
+      "filename" : "ic_game_item_cup_2_garb.png",
       "idiom" : "universal"
-    },
-    {
-      "filename" : "ic_game_item_cup_garb.svg",
-      "idiom" : "universal",
-      "scale" : "1x",
-      "unassigned" : true
     }
   ],
   "info" : {
