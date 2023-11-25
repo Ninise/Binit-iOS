@@ -59,12 +59,21 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
-                            ForEach(viewModel.categories, id: \.id) { type in
-                                NavigationLink(destination: GarbageDetailsView(item: type), label: {
-                                    MainGarbageCardView(type: type)
+                            
+                            if viewModel.isLoading {
+                                ForEach(0..<4) { value in
+                                    MainGarbageCardView(type: nil, isLoading: true)
                                         .padding(.trailing, 8)
-                                })
+                                }
+                            } else {
+                                ForEach(viewModel.categories, id: \.id) { type in
+                                    NavigationLink(destination: GarbageDetailsView(item: type), label: {
+                                        MainGarbageCardView(type: type, isLoading: false)
+                                            .padding(.trailing, 8)
+                                    })
+                                }
                             }
+                            
                         }
                     }
                     .padding(.top, 1)
@@ -82,17 +91,29 @@ struct HomeView: View {
                     MainTextTitleView(title: LocalizedStringKey("Good_to_know"))
                   
                     
-                    ForEach(viewModel.articles) { article in
-                        NavigationLink(destination: ArticleDetailsView(item: article), label: {
-                            MainArticleItemView(article: article)
-                        })
-                        
-                        Divider()
-                            .background(Color.mainColor.opacity(0.1))
-                            .padding(.horizontal, PaddingConsts.pDefaultPadding20)
-                            .padding(.vertical, 5)
-                      
+                    if viewModel.isLoading {
+                        ForEach(0..<4) { value in
+                            MainArticleItemView(article: nil, isLoading: true)
+                            
+                            Divider()
+                                .background(Color.mainColor.opacity(0.1))
+                                .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                                .padding(.vertical, 5)
+                        }
+                    } else {
+                        ForEach(viewModel.articles) { article in
+                            NavigationLink(destination: ArticleDetailsView(item: article), label: {
+                                MainArticleItemView(article: article, isLoading: false)
+                            })
+                            
+                            Divider()
+                                .background(Color.mainColor.opacity(0.1))
+                                .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                                .padding(.vertical, 5)
+                          
+                        }
                     }
+                    
                     
                 }
             }
@@ -146,51 +167,98 @@ struct QuickSearchBubbleView: View {
 
 struct MainGarbageCardView: View {
     
-    let type: GarbageCategory
+    let type: GarbageCategory?
+    let isLoading: Bool
     
     var body: some View {
         VStack {
             ZStack {
-                Image(GarbageUtils.getBinByType(type: type.type))
+                if let image = type?.type {
+                    Image(GarbageUtils.getBinByType(type: image))
+                } else {
+                    // we use an image here to pre-set the real size of the image to download
+                    if isLoading {
+                        Image(GarbageUtils.getBinByType(type: GarbageUtils.GARBAGE_TYPE))
+                    }
+                }
             }
             .padding(.vertical, PaddingConsts.pDefaultPadding20)
             .padding(.horizontal, 24)
             .background(Color.mainGarbageTypeBackColor)
             .cornerRadius(10)
             
-            Text(type.display_type)
-                .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
-                .foregroundColor(.mainColor)
+            if let type = type?.display_type {
+                Text(type)
+                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                    .foregroundColor(.mainColor)
+            } else {
+                Text("Loading")
+                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                    .foregroundColor(.mainColor)
+            }
         }
+        .redacted(reason: isLoading ? .placeholder : [])
+        .shimmering(
+            active: isLoading,
+            animation: .easeInOut(duration: 1).repeatForever(autoreverses: false).delay(0.5)
+        )
     }
 }
 
+
 struct MainArticleItemView: View {
     
-    let article: Article
+    let article: Article?
+    let isLoading: Bool
     
     var body: some View {
         HStack (alignment: .top) {
-            WebImage(url: URL(string: article.image))
-                .resizable()
-                .scaledToFill()
-                .frame(width: 80, height: 80)
-                .cornerRadius(10)
+            if let image = article?.image {
+                WebImage(url: URL(string: image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .cornerRadius(10)
+            } else {
+                if isLoading {
+                    Image(GarbageUtils.getBinByType(type: GarbageUtils.DEPOT_TYPE))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(10)
+                }
+            }
             
             
             VStack (alignment: .leading, spacing: 5) {
-                Text(article.title)
-                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
-                    .foregroundColor(.mainColor)
+                if let title = article?.title, let description = article?.short_description {
+                    Text(title)
+                        .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                        .foregroundColor(.mainColor)
+                    
+                    Text(description)
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 15))
+                        .foregroundColor(.mainArticleSubTitleColor)
+                } else {
+                    Text("Loading")
+                        .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                        .foregroundColor(.mainColor)
+                    
+                    Text("Loading Loading Loading")
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 15))
+                        .foregroundColor(.mainArticleSubTitleColor)
+                }
                 
-                Text(article.short_description)
-                    .font(.custom(FontUtils.FONT_REGULAR, size: 15))
-                    .foregroundColor(.mainArticleSubTitleColor)
             }
             .padding(.leading, 5)
             
             Spacer()
         }
         .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+        .redacted(reason: isLoading ? .placeholder : [])
+        .shimmering(
+            active: isLoading,
+            animation: .easeInOut(duration: 1).repeatForever(autoreverses: false).delay(0.5)
+        )
     }
 }

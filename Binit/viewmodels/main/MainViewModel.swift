@@ -24,7 +24,7 @@ class MainViewModel: NSObject, ObservableObject {
     
     func openUrl(urlStr: String) {
         guard let url = URL(string: urlStr) else {
-          return
+            return
         }
         
         if #available(iOS 10.0, *) {
@@ -35,6 +35,7 @@ class MainViewModel: NSObject, ObservableObject {
     }
     
     func getAllArticles() {
+        self.isLoading = true
         BinitRepository.shared.getAllArticles(completion: { result in
             switch result {
             case .success(let response):
@@ -43,6 +44,8 @@ class MainViewModel: NSObject, ObservableObject {
             case .failure(let error):
                 self.error = error
             }
+            
+            self.isLoading = false
         })
     }
     
@@ -63,6 +66,7 @@ class MainViewModel: NSObject, ObservableObject {
     }
     
     func getGarbageCategories() {
+        self.isLoading = true
         BinitRepository.shared.getGarbageCategories(completion: { result in
             switch result {
             case .success(let response):
@@ -71,6 +75,7 @@ class MainViewModel: NSObject, ObservableObject {
             case .failure(let error):
                 self.error = error
             }
+            self.isLoading = false
         })
     }
     
