@@ -127,9 +127,6 @@ struct SearchListView: View {
         .onAppear {
             search = searchWord
             viewModel.getQuickSearchSuggestions()
-            
-//            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor(Color.searchBodyColor)
-//            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
         }
     }
    
@@ -152,7 +149,7 @@ struct SearchItemView: View {
     var body: some View {
         VStack {
             HStack (alignment: .center) {
-                if item.image.isEmpty {
+//                if item.image.isEmpty {
                     ZStack {
                         Image(GarbageUtils.getBinByType(type: item.type))
                             .resizable()
@@ -161,13 +158,13 @@ struct SearchItemView: View {
                             .cornerRadius(10)
                     }
                     .frame(width: 80, height: 80)
-                } else {
-                    WebImage(url: URL(string: item.image))
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .cornerRadius(10)
-                }
+//                } else {
+//                    WebImage(url: URL(string: item.image))
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 80, height: 80)
+//                        .cornerRadius(10)
+//                }
                 
                 VStack (alignment: .leading) {
                     Spacer()
