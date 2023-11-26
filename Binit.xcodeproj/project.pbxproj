@@ -28,6 +28,11 @@
 		1152D0732AC8E4050067AE02 /* InviteFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152D0722AC8E4050067AE02 /* InviteFriendView.swift */; };
 		1153FB572B12C36700CE03AA /* ShimmeringView in Frameworks */ = {isa = PBXBuildFile; productRef = 1153FB562B12C36700CE03AA /* ShimmeringView */; };
 		1153FB592B13B4DA00CE03AA /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1153FB582B13B4DA00CE03AA /* Fonts */; };
+		1153FB5C2B13E76500CE03AA /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153FB5B2B13E76400CE03AA /* TabBarItem.swift */; };
+		1153FB5E2B13E79600CE03AA /* TabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153FB5D2B13E79600CE03AA /* TabBarContainerView.swift */; };
+		1153FB602B13E7B600CE03AA /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153FB5F2B13E7B600CE03AA /* TabView.swift */; };
+		1153FB622B13E7D500CE03AA /* TabBarItemPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153FB612B13E7D500CE03AA /* TabBarItemPreferenceKey.swift */; };
+		1153FB642B13FCD000CE03AA /* Notifications+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1153FB632B13FCD000CE03AA /* Notifications+extensions.swift */; };
 		116C1C222AC9AF1C0006879F /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C212AC9AF1C0006879F /* FeedbackView.swift */; };
 		116C1C242AC9B37C0006879F /* Strings+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C232AC9B37C0006879F /* Strings+extensions.swift */; };
 		116C1C262AC9B5A40006879F /* AppDefaultTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */; };
@@ -127,6 +132,11 @@
 		1152D0722AC8E4050067AE02 /* InviteFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendView.swift; sourceTree = "<group>"; };
 		1153FB542B12BBC900CE03AA /* ShimmeringView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShimmeringView; path = ../ShimmeringView; sourceTree = "<group>"; };
 		1153FB582B13B4DA00CE03AA /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; sourceTree = "<group>"; };
+		1153FB5B2B13E76400CE03AA /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		1153FB5D2B13E79600CE03AA /* TabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerView.swift; sourceTree = "<group>"; };
+		1153FB5F2B13E7B600CE03AA /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		1153FB612B13E7D500CE03AA /* TabBarItemPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemPreferenceKey.swift; sourceTree = "<group>"; };
+		1153FB632B13FCD000CE03AA /* Notifications+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notifications+extensions.swift"; sourceTree = "<group>"; };
 		116C1C212AC9AF1C0006879F /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		116C1C232AC9B37C0006879F /* Strings+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+extensions.swift"; sourceTree = "<group>"; };
 		116C1C252AC9B5A40006879F /* AppDefaultTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultTextFieldView.swift; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 				11EACF072ADC8A1B00A51736 /* UIScreen+extensions.swift */,
 				11EAD76A2AE47905001AC2BC /* Shake+extensions.swift */,
 				11EAD7722AE485F6001AC2BC /* View+extension.swift */,
+				1153FB632B13FCD000CE03AA /* Notifications+extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 		1152D05C2AC264DA0067AE02 /* custom_views */ = {
 			isa = PBXGroup;
 			children = (
+				1153FB5A2B13E73300CE03AA /* tabview */,
 				11EAD7712AE482A0001AC2BC /* textviews */,
 				11EAD7702AE48291001AC2BC /* buttons */,
 				110412A02ADBFFCF00E15B86 /* drag_and_drop */,
@@ -295,6 +307,17 @@
 				1153FB542B12BBC900CE03AA /* ShimmeringView */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1153FB5A2B13E73300CE03AA /* tabview */ = {
+			isa = PBXGroup;
+			children = (
+				1153FB5B2B13E76400CE03AA /* TabBarItem.swift */,
+				1153FB5D2B13E79600CE03AA /* TabBarContainerView.swift */,
+				1153FB5F2B13E7B600CE03AA /* TabView.swift */,
+				1153FB612B13E7D500CE03AA /* TabBarItemPreferenceKey.swift */,
+			);
+			path = tabview;
 			sourceTree = "<group>";
 		};
 		116C1C312ACA24BC0006879F /* games */ = {
@@ -692,7 +715,10 @@
 				116C1C2E2ACA13980006879F /* ReportProblemView.swift in Sources */,
 				11B87CDE2AD16DC50057783B /* MainViewModel.swift in Sources */,
 				11DE11292AD414C5008812F8 /* QuizGameView.swift in Sources */,
+				1153FB5E2B13E79600CE03AA /* TabBarContainerView.swift in Sources */,
 				11F6202C2AC25A03005FB2EC /* ContentView.swift in Sources */,
+				1153FB642B13FCD000CE03AA /* Notifications+extensions.swift in Sources */,
+				1153FB602B13E7B600CE03AA /* TabView.swift in Sources */,
 				1152D0532AC260490067AE02 /* FontUtils.swift in Sources */,
 				110412A42ADC000C00E15B86 /* DragableObject.swift in Sources */,
 				116C1C4D2ACE3D2C0006879F /* SuggestRequest.swift in Sources */,
@@ -700,6 +726,7 @@
 				110412A62ADC003500E15B86 /* DropAreaOverlay.swift in Sources */,
 				11EAD76B2AE47905001AC2BC /* Shake+extensions.swift in Sources */,
 				11F923D12AD35E50002B40FD /* Utils.swift in Sources */,
+				1153FB5C2B13E76500CE03AA /* TabBarItem.swift in Sources */,
 				110412AC2ADC00A100E15B86 /* Utility+onRotate.swift in Sources */,
 				1152D0552AC260CC0067AE02 /* Color+extensions.swift in Sources */,
 				1152D0612AC3B4C70067AE02 /* HomeView.swift in Sources */,
@@ -723,6 +750,7 @@
 				116C1C222AC9AF1C0006879F /* FeedbackView.swift in Sources */,
 				11F923C22AD301FA002B40FD /* SuggestionsConts.swift in Sources */,
 				11F923C02AD2F8BB002B40FD /* ArticleDetailsView.swift in Sources */,
+				1153FB622B13E7D500CE03AA /* TabBarItemPreferenceKey.swift in Sources */,
 				1152D0632AC3BA830067AE02 /* PaddingConsts.swift in Sources */,
 				116C1C242AC9B37C0006879F /* Strings+extensions.swift in Sources */,
 				1152D06C2AC7A3280067AE02 /* CollectionScheduleView.swift in Sources */,

@@ -16,8 +16,43 @@ struct SearchListView: View {
     
     @State private var search: String = ""
     
+    let searchIcon = "ic_search"
+    
     var body: some View {
         VStack {
+            
+            HStack {
+            
+                HStack {
+                    Image(searchIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                    
+                    TextField("Search", text: $search)
+                        .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                        .foregroundColor(.additionalTextColor)
+                        .accentColor(.orangeColor)
+                        .autocapitalization(.none)
+                    
+                    Spacer()
+                    
+                    if (!search.isEmpty) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.searchBubbleTextColor.opacity(0.4))
+                            .onTapGesture {
+                                search = ""
+                            }
+                    }
+                }
+                .padding(.all, 12)
+                .background(Color.mainGarbageTypeBackColor)
+                .cornerRadius(8)
+                .frame(width: .infinity)
+                .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                .padding(.top, PaddingConsts.pDefaultPadding20)
+            }
+            
 
             if (search.isEmpty) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -118,9 +153,11 @@ struct SearchListView: View {
 
                     
         }
-        .navigationTitle(Text("Search products"))
-        .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always))
-        .autocapitalization(.none)
+        .onNotification(.quickSearch, perform: { data in
+            if data.object is String {
+                search = data.object as! String
+            }
+        })
         .onChange(of: search, perform: { newValue in
             viewModel.search(query: newValue)
         })
@@ -145,19 +182,22 @@ struct SearchItemView: View {
     
     @State private var expanded: Bool = false
     
+    let defIcon = "ic_def_search"
     
     var body: some View {
         VStack {
             HStack (alignment: .center) {
 //                if item.image.isEmpty {
                     ZStack {
-                        Image(GarbageUtils.getBinByType(type: item.type))
+                        Image(defIcon)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 60, height: 60)
-                            .cornerRadius(10)
+                            .frame(width: 30, height: 30)
+//                            .cornerRadius(10)
                     }
-                    .frame(width: 80, height: 80)
+                    .padding(.all, 27)
+                    .background(Color.mainGarbageTypeBackColor)
+                    .cornerRadius(10)
 //                } else {
 //                    WebImage(url: URL(string: item.image))
 //                        .resizable()
@@ -167,7 +207,6 @@ struct SearchItemView: View {
 //                }
                 
                 VStack (alignment: .leading) {
-                    Spacer()
                     
                     Text(item.name.capitalized)
                         .font(.custom(FontUtils.FONT_REGULAR, size: 16))
@@ -181,7 +220,8 @@ struct SearchItemView: View {
                     
                     Spacer()
                 }
-                .padding(.leading, 5)
+                .padding(.top, PaddingConsts.pDefaultPadding10)
+                .padding(.leading, PaddingConsts.pDefaultPadding5)
                 .onTapGesture {
                     expanded.toggle()
                 }

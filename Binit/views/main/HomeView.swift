@@ -11,10 +11,16 @@ import ShimmeringView
 
 struct HomeView: View {
     
+    enum HomeEvents {
+        case search
+    }
+    
     @StateObject var viewModel = MainViewModel()
     
     let gameImage = "ic_main_game"
     let searchIcon = "ic_search"
+    
+    let onEvent: (HomeEvents, Any) -> Void
     
     var body: some View {
         ZStack {
@@ -27,39 +33,42 @@ struct HomeView: View {
                         .font(.custom(FontUtils.FONT_SEMIBOLD, size: 20))
                         .foregroundColor(.mainColor)
                     
-                    NavigationLink(destination: SearchListView(searchWord: ""), label: {
-                        HStack {
-                            Image(searchIcon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                            
-                            Text(LocalizedStringKey("Search"))
-                                .font(.custom(FontUtils.FONT_REGULAR, size: 16))
-                                .foregroundColor(.searchTextColor.opacity(0.5))
-                            
-                            Spacer()
-                            
-                        }
-                        .padding(.all, 12)
-                        .background(Color.mainGarbageTypeBackColor)
-                        .cornerRadius(8)
-                        .frame(width: .infinity)
-                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
-                        .padding(.top, PaddingConsts.pDefaultPadding5)
-                    })
+                    HStack {
+                        Image(searchIcon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        
+                        Text(LocalizedStringKey("Search"))
+                            .font(.custom(FontUtils.FONT_REGULAR, size: 16))
+                            .foregroundColor(.searchTextColor.opacity(0.5))
+                        
+                        Spacer()
+                        
+                    }
+                    .padding(.all, 12)
+                    .background(Color.mainGarbageTypeBackColor)
+                    .cornerRadius(8)
+                    .frame(width: .infinity)
+                    .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                    .padding(.top, PaddingConsts.pDefaultPadding5)
+                    .onTapGesture {
+                        onEvent(.search, "")
+                    }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             Spacer(minLength: PaddingConsts.pDefaultPadding20)
                             ForEach(viewModel.quickSearches, id: \.id) { text in
-                                NavigationLink(destination: SearchListView(searchWord: text.name), label: {
-                                    QuickSearchBubbleView(title: text.name)
-                                })
+                                QuickSearchBubbleView(title: text.name)
+                                    .onTapGesture {
+                                        NotificationCenter.default.post(name: .quickSearch, object: text.name)
+                                        onEvent(.search, "")
+                                    }
                             }
                         }
                     }
-                    .padding(.top, 7)
+                    .padding(.top, 5)
                     
                     MainTextTitleView(title: LocalizedStringKey("How_to_sort"))
                     
@@ -137,7 +146,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView( onEvent: {_, _ in})
     }
 }
 
@@ -202,11 +211,11 @@ struct MainGarbageCardView: View {
             
             if let type = type?.display_type {
                 Text(type)
-                    .font(.custom(FontUtils.FONT_MEDIUM, size: 12))
+                    .font(.custom(FontUtils.FONT_MEDIUM, size: 14))
                     .foregroundColor(.mainColor)
             } else {
                 Text("Loading")
-                    .font(.custom(FontUtils.FONT_MEDIUM, size: 12))
+                    .font(.custom(FontUtils.FONT_MEDIUM, size: 14))
                     .foregroundColor(.mainColor)
             }
         }
