@@ -11,6 +11,7 @@ struct PaddingConsts {
     
     static let pDefaultPadding20: CGFloat = 20
     static let pDefaultPadding10: CGFloat = 10
+    static let pDefaultPadding5: CGFloat = 5
     
     
 }

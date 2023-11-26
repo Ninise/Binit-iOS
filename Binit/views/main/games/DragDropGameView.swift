@@ -15,6 +15,7 @@ struct DragDropGameView: View {
     
     let gameSet: [GameObject]
     
+    // Bins viewModels
     @State var organicDADVM = DragAndDropViewModel()
     @State var recycleDADVM = DragAndDropViewModel()
     @State var garbageDADVM = DragAndDropViewModel()

@@ -24,7 +24,7 @@ struct GamesListView: View {
                 Image(firstGameImage)
                     .resizable()
                     .scaledToFit()
-                    .cornerRadius(6)
+                    .cornerRadius(10)
             })
             
             
@@ -37,7 +37,7 @@ struct GamesListView: View {
                 Image(secondGameImage)
                     .resizable()
                     .scaledToFit()
-                    .cornerRadius(6)
+                    .cornerRadius(10)
             })
             
             Spacer()

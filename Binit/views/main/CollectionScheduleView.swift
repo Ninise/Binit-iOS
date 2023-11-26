@@ -60,7 +60,7 @@ struct CollectionScheduleView: View {
                 AppDefaultTextFieldView(
                     text: $message,
                     hint: LocalizedStringKey("Message").stringValue(),
-                    lineLimit: 4
+                    lineLimit: 5
                 )
                 .padding(.horizontal, -2)
                 

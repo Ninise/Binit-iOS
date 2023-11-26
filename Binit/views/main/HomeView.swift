@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import ShimmeringView
 
 struct HomeView: View {
     
@@ -19,6 +20,13 @@ struct HomeView: View {
         ZStack {
             ScrollView (showsIndicators: false) {
                 VStack (alignment: .leading) {
+                    
+                    Text(LocalizedStringKey("Home_title"))
+                        .padding(.leading, PaddingConsts.pDefaultPadding20)
+                        .padding(.top, PaddingConsts.pDefaultPadding20)
+                        .font(.custom(FontUtils.FONT_SEMIBOLD, size: 20))
+                        .foregroundColor(.mainColor)
+                    
                     NavigationLink(destination: SearchListView(searchWord: ""), label: {
                         HStack {
                             Image(searchIcon)
@@ -33,13 +41,12 @@ struct HomeView: View {
                             Spacer()
                             
                         }
-                        .padding()
-                        .background(Color.searchBodyColor.opacity(0.1))
-                        .cornerRadius(6)
+                        .padding(.all, 12)
+                        .background(Color.mainGarbageTypeBackColor)
+                        .cornerRadius(8)
                         .frame(width: .infinity)
-                        .padding(.leading, PaddingConsts.pDefaultPadding20)
-                        .padding(.trailing, 30)
-                        .padding(.top, 15)
+                        .padding(.horizontal, PaddingConsts.pDefaultPadding20)
+                        .padding(.top, PaddingConsts.pDefaultPadding5)
                     })
                     
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -140,7 +147,7 @@ struct MainTextTitleView: View {
     
     var body: some View {
         Text(title)
-            .font(.custom(FontUtils.FONT_BOLD, size: 20))
+            .font(.custom(FontUtils.FONT_SEMIBOLD, size: 18))
             .foregroundColor(.mainColor)
             .padding(.top, PaddingConsts.pDefaultPadding20)
             .padding(.leading, PaddingConsts.pDefaultPadding20)
@@ -151,16 +158,22 @@ struct QuickSearchBubbleView: View {
     
     let title: String
     
+    let arrowIcon = "ic_main_bubble_arrow"
+    
     var body: some View {
-        ZStack {
+        HStack (alignment: .center) {
+            
+            Image(arrowIcon)
+                .foregroundColor(.additionalTextColor)
+            
             Text(title)
                 .fixedSize(horizontal: true, vertical: false)
                 .font(.custom(FontUtils.FONT_REGULAR, size: 15))
-                .foregroundColor(.searchBubbleTextColor)
+                .foregroundColor(.additionalTextColor)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .background(Color.searchBodyColor.opacity(0.1))
+        .background(Color.mainGarbageTypeBackColor)
         .cornerRadius(6)
     }
 }
@@ -189,11 +202,11 @@ struct MainGarbageCardView: View {
             
             if let type = type?.display_type {
                 Text(type)
-                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                    .font(.custom(FontUtils.FONT_MEDIUM, size: 12))
                     .foregroundColor(.mainColor)
             } else {
                 Text("Loading")
-                    .font(.custom(FontUtils.FONT_SEMIBOLD, size: 15))
+                    .font(.custom(FontUtils.FONT_MEDIUM, size: 12))
                     .foregroundColor(.mainColor)
             }
         }
