@@ -19,12 +19,11 @@ The goal of the project is to teach people how to sort their garbage, especially
 
 <p>
   <img src="main.jpg" width="225">
-  <img src="games.jpg" width="225">
   <img src="quiz.jpg" width="225">
   <img src="search.jpg" width="225">
   <img src="drop.jpg" width="225">
   <img src="settings.jpg" width="225">
-  <img src="article" width="225">
+  <img src="article.jpg" width="225">
 </p>
 
 -----------------------------------------------------
